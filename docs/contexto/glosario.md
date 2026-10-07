@@ -1,4 +1,4 @@
-# Glosario del Producto: Rocket Pizza Lunar
+# Glosario del Producto: Rocket Pizza
 
 ## 1. Entidades del Dominio Espacial
 - **Rocket Pizza:** Cadena de pizzerías intergaláctica automatizada que entrega pedidos mediante estaciones orbitales y robots espaciales.

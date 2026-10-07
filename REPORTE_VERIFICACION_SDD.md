@@ -1,7 +1,7 @@
-# Reporte Oficial de Verificación y Cierre SDD: Rocket Pizza Lunar
+# Reporte Oficial de Verificación y Cierre SDD: Rocket Pizza
 
 **Seminario:** Interfaz de Usuario y Desarrollo de Software (iTec 2026)  
-**Proyecto:** Rocket Pizza Lunar SPA  
+**Proyecto:** Rocket Pizza SPA  
 **Metodología:** Spec-Driven Development (SDD) & Harness Agéntico Multiagente (Adaptación OpenCode Días 1-3 a Google Antigravity / Gemini CLI)  
 **Director Técnico / Product Owner:** Usuario Humano  
 **Equipo Agéntico:**
@@ -170,6 +170,6 @@
 
 ## 5. Dictamen Final del Coordinador
 
-El proyecto **Rocket Pizza Lunar** ha superado todas las compuertas de calidad, arquitectura y accesibilidad estipuladas para el Seminario de Interfaz de Usuario y Desarrollo de Software (iTec 2026), culminando con un acabado visual aeroespacial de grado profesional, libre de emojis genéricos, sin tarjetas anidadas, con selectores WAI-ARIA responsivos y 100% operable por teclado bajo WCAG AA.
+El proyecto **Rocket Pizza** ha superado todas las compuertas de calidad, arquitectura y accesibilidad estipuladas para el Seminario de Interfaz de Usuario y Desarrollo de Software (iTec 2026), culminando con un acabado visual aeroespacial de grado profesional, libre de emojis genéricos, sin tarjetas anidadas, con selectores WAI-ARIA responsivos y 100% operable por teclado bajo WCAG AA.
 
 **Estado:** Aprobado para entrega y presentación oficial.

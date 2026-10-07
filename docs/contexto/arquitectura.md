@@ -1,7 +1,7 @@
-# Blueprint de Arquitectura: Rocket Pizza Lunar (SPA)
+# Blueprint de Arquitectura: Rocket Pizza (SPA)
 
 ## 1. Visión General del Sistema
-Rocket Pizza Lunar es una Single Page Application (SPA) reactiva y ligera desarrollada para el Seminario de Interfaz de Usuario y Desarrollo de Software (iTec 2026). La aplicación permite la personalización y pedido de pizzas intergalácticas para dos especies con necesidades metabólicas distintas: **Humanos** y **Aliens Zogtonianos**.
+Rocket Pizza es una Single Page Application (SPA) reactiva y ligera desarrollada para el Seminario de Interfaz de Usuario y Desarrollo de Software (iTec 2026). La aplicación permite la personalización y pedido de pizzas intergalácticas para dos especies con necesidades metabólicas distintas: **Humanos** y **Aliens Zogtonianos**.
 
 ## 2. Diagrama Modular y Flujo de Datos
 El flujo de datos es unidireccional y se gestiona mediante un Store de estado centralizado en memoria del cliente con persistencia en `localStorage`.

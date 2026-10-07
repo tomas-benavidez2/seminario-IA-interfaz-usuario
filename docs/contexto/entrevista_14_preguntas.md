@@ -1,6 +1,6 @@
 # Registro de la Entrevista UX de 14 Preguntas (Clase 4)
 
-**Proyecto:** Rocket Pizza Lunar  
+**Proyecto:** Rocket Pizza  
 **Fuente de Datos:** Prototipo Figma `Reto 5` (`K52ZLdBz6VmB371pCzuIDI`)  
 **Metodología:** Gentle-AI SDD & iTec 2026  
 
@@ -9,7 +9,7 @@
 ### Bloque 1: Identidad, Usuarios y Glosario (Alimenta `arquitectura.md` y `glosario.md`)
 
 1. **Nombre y Propósito del Sitio Web:**
-   - **Respuesta:** Se llama *Rocket Pizza Lunar*. Es una plataforma de pedidos de pizzas espaciales para tripulantes en bases y domos lunares, permitiendo personalizar ingredientes compatibles y recibir entregas automatizadas en menos de 15 minutos luz.
+   - **Respuesta:** Se llama *Rocket Pizza*. Es una plataforma de pedidos de pizzas espaciales para tripulantes en bases y domos lunares, permitiendo personalizar ingredientes compatibles y recibir entregas automatizadas en menos de 15 minutos luz.
 2. **Arquetipos de Usuario ("Personas") y Puntos de Dolor:**
    - **Respuesta:**
      - *Persona 1: Kevin (Humano).* Minero espacial fatigado. Opera con guantes en tablet industrial con conectividad intermitente. Dolor: Botones pequeños o formularios largos. Requiere controles táctiles >= 48px y checkout en 2 clics.

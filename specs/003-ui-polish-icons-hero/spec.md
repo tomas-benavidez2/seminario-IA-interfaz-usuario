@@ -1,7 +1,7 @@
 # Especificación Funcional: Hero Abierto, Selects Accesibles e Iconografía Sci-Fi (003-ui-polish-icons-hero)
 
 ## 1. Propósito y Alcance
-Esta especificación aborda la tanda final de refinamientos estéticos, de layout y de usabilidad del proyecto Rocket Pizza Lunar:
+Esta especificación aborda la tanda final de refinamientos estéticos, de layout y de usabilidad del proyecto Rocket Pizza:
 1. **Hero Abierto y Ergonómico:** Eliminación del antipatrón de tarjeta dentro de tarjeta ("container inception") en la sección Hero, adoptando un diseño abierto (*Open Canvas Hero*) con distribución en 2 columnas en pantallas de escritorio.
 2. **Estilizado Responsivo de Desplegables (`<select>`):** Personalización de los controles de selección de sector y método de pago con `appearance: none`, chevron SVG de precisión y opciones formateadas con alto contraste y sin desbordamiento en dispositivos móviles.
 3. **Iconografía Vectorial Sci-Fi Minimalista:** Reemplazo integral de emojis genéricos del sistema por glifos e iconos vectoriales SVG en línea, monocromáticos y dinámicos, consistentes con la paleta de tokens de Figma (*Reto 5*).

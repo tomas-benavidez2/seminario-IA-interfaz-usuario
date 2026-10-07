@@ -1,4 +1,4 @@
-# Plan de Implementación Técnica: Rocket Pizza Lunar (001-rocket-pizza)
+# Plan de Implementación Técnica: Rocket Pizza (001-rocket-pizza)
 
 ## 1. Visión General de la Arquitectura de Archivos
 

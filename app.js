@@ -1,5 +1,5 @@
 /**
- * Rocket Pizza Lunar - Sistema de Control de la SPA
+ * Rocket Pizza - Sistema de Control de la SPA
  * Arquitectura Modular SDD (Gentle-AI) - Seminario iTec 2026
  *
  * Módulos implementados en T2:
@@ -1967,7 +1967,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const savedCart = StorageManager.getCart();
   if (savedCart) {
     appStore.restoreCart(savedCart);
-    console.log('[Rocket Pizza Lunar] Estado del carrito restaurado exitosamente desde localStorage.');
+    console.log('[Rocket Pizza] Estado del carrito restaurado exitosamente desde localStorage.');
   }
 
   // 4. Inicializar ThemeManager, A11yModalManager, CustomComboboxManager y OrderFormManager
@@ -1999,5 +1999,5 @@ document.addEventListener('DOMContentLoaded', () => {
     OrderFormManager
   };
 
-  console.log('[Rocket Pizza Lunar] Módulos inicializados: Store, StorageManager, ThemeManager, BioValidator, A11yModalManager, PricingEngine, CustomComboboxManager, OrderFormManager.');
+  console.log('[Rocket Pizza] Módulos inicializados: Store, StorageManager, ThemeManager, BioValidator, A11yModalManager, PricingEngine, CustomComboboxManager, OrderFormManager.');
 });

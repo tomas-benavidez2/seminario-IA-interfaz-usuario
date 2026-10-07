@@ -1,7 +1,7 @@
 # Seminario UX Rocket Pizza - Plan Maestro de Integración
 
 ## Objetivo
-Desarrollar y presentar el proyecto SPA **Rocket Pizza Lunar** para el Seminario de Interfaz de Usuario y Desarrollo de Software (iTec 2026), integrando la metodología de arneses agénticos (OpenCode Días 1-3) adaptada a Antigravity CLI con gobernanza Gentle-AI (SDD).
+Desarrollar y presentar el proyecto SPA **Rocket Pizza** para el Seminario de Interfaz de Usuario y Desarrollo de Software (iTec 2026), integrando la metodología de arneses agénticos (OpenCode Días 1-3) adaptada a Antigravity CLI con gobernanza Gentle-AI (SDD).
 
 ## Criterios de Aceptación & Rúbrica (100 pts)
 1. **Fidelidad Figma & UI (25 pts):** Traducción fiel del diseño, jerarquía Gestalt, responsive mobile-first y selector Dark/Light mode con contraste WCAG AA.

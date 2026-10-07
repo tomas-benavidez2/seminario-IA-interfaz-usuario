@@ -1,4 +1,4 @@
-# Lista de Tareas de Implementación: Rocket Pizza Lunar (001-rocket-pizza)
+# Lista de Tareas de Implementación: Rocket Pizza (001-rocket-pizza)
 
 ## Resumen del Plan de Tareas
 Esta hoja de ruta establece 5 tareas atómicas y secuenciales (T1 a T5) diseñadas para que el rol **Implementer** construya la SPA interactiva sin romper los principios de Spec-Driven Development (SDD), cubriendo los 5 estados en cada control, la prueba de la mano atada y el cumplimiento estricto de WCAG AA.
@@ -11,7 +11,7 @@ Esta hoja de ruta establece 5 tareas atómicas y secuenciales (T1 a T5) diseñad
 - **Archivos a modificar por Implementer:** `index.html`, `style.css`.
 - **Descripción detallada:**
   1. En `index.html`, crear la estructura semántica:
-     - `<header>` con logotipo de Rocket Pizza Lunar, selector de especie (`role="radiogroup"`), botón de switch de tema (`id="theme-toggle"`, `aria-label`, `aria-pressed`) y badge del carrito.
+     - `<header>` con logotipo de Rocket Pizza, selector de especie (`role="radiogroup"`), botón de switch de tema (`id="theme-toggle"`, `aria-label`, `aria-pressed`) y badge del carrito.
      - `<main>` con sección Hero de bienvenida, configurador de pizza (`#builder`) con grupos accesibles para tamaño, masa, catálogo de ingredientes y panel de PowerUps.
      - Sección de resumen y checkout (`#checkout-section`) con tabla de desglose de precios y formulario de entrega lunar (`<form id="order-form">`).
      - Elementos `<dialog>` para el modal de advertencia biológica (`#modal-bio-alert`) y modal de confirmación (`#modal-order-success`).

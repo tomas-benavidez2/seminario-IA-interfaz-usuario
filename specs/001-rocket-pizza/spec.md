@@ -1,7 +1,7 @@
-# Especificación Funcional: Rocket Pizza Lunar (001-rocket-pizza)
+# Especificación Funcional: Rocket Pizza (001-rocket-pizza)
 
 ## 1. Propósito y Visión del Producto
-Rocket Pizza Lunar es una Single Page Application (SPA) interactiva, responsiva y accesible de última generación diseñada para el Seminario iTec 2026. La aplicación simula el sistema de pedidos de una pizzería intergaláctica automatizada que atiende tanto a clientes **Humanos** (consumidores de gastronomía terrestre) como a **Aliens Zogtonianos** (seres extraterrestres bioenergéticos con acceso a PowerUps y a un subsidio intergaláctico del 50% de descuento).
+Rocket Pizza es una Single Page Application (SPA) interactiva, responsiva y accesible de última generación diseñada para el Seminario iTec 2026. La aplicación simula el sistema de pedidos de una pizzería intergaláctica automatizada que atiende tanto a clientes **Humanos** (consumidores de gastronomía terrestre) como a **Aliens Zogtonianos** (seres extraterrestres bioenergéticos con acceso a PowerUps y a un subsidio intergaláctico del 50% de descuento).
 
 El objetivo principal es ofrecer una experiencia de usuario inmersiva y fluida, cumpliendo con los estándares de diseño de Figma (Reto 5), garantizando una accesibilidad universal de nivel **WCAG AA**, soportando la **Prueba de la Mano Atada** (operación exclusiva por teclado) y exhibiendo de forma consistente los **5 estados interactivos** en cada control.
 
@@ -34,7 +34,7 @@ El objetivo principal es ofrecer una experiencia de usuario inmersiva y fluida, 
 ## 3. Requisitos Funcionales en Sintaxis EARS
 
 ### 3.1 Requisitos Ubicuos (Ubiquitous Requirements)
-- **REQ-UBI-01 (Navegación y Controles Globales):** El sistema deberá mantener visible y accesible en todo momento una barra de navegación superior con el logo de Rocket Pizza Lunar, el conmutador de tema, el selector de especie y el indicador dinámico del carrito.
+- **REQ-UBI-01 (Navegación y Controles Globales):** El sistema deberá mantener visible y accesible en todo momento una barra de navegación superior con el logo de Rocket Pizza, el conmutador de tema, el selector de especie y el indicador dinámico del carrito.
 - **REQ-UBI-02 (Los 5 Estados Interactivos):** El sistema deberá garantizar que todo elemento interactivo (`<button>`, `<a>`, `<input>`, `<select>`) implemente y exhiba de manera perceptible los 5 estados de control:
   1. *Default:* Contraste de texto y fondo conforme a WCAG AA (mínimo 4.5:1).
   2. *Hover:* Variación visual perceptible (elevación de brillo o cambio de tono específico).
