@@ -28,3 +28,8 @@
 - **Problema:** El prototipo presentaba discrepancias con los tokens exactos del diseño: el badge numérico del carrito utilizaba naranja en lugar de Albahaca Neón (`#55E16B` con texto `#00390F`), la cabecera no coincidía con `#10141A`, y los contrastes de los badges necesitaban alineación rigurosa con la paleta de Figma.
 - **Solución Adoptada:** Incorporar los tokens nativos extraídos de `Paleta de Colores (2002:22)` y `Header - TopAppBar (1:391)` asegurando fidelidad 1:1 y ratio WCAG AA >= 4.5:1.
 
+## 8. Incontrolabilidad de Estilo y Desbordamiento en `<select>` y `<option>` Nativos
+- **Problema:** En la especificación HTML, el menú desplegable que contiene los elementos `<option>` no pertenece al árbol de renderizado CSS ordinario, sino que es delegado al motor de widgets nativo del Sistema Operativo. Propiedades CSS críticas como `max-width`, `text-overflow: ellipsis`, bordes redondeados y fondos personalizados son ignoradas en los `<option>`. En dispositivos móviles y emulaciones responsive, el menú nativo se abre como una ventana emergente del SO que excede el ancho del contenedor del formulario (`width > 100%`), desborda la pantalla y rompe la paleta visual del tema oscuro.
+- **Solución Adoptada:** Implementar el patrón WAI-ARIA **Accessible Custom Select / Combobox** (`role="combobox"` para el botón disparador y `role="listbox"` con `role="option"` para la lista desplegable). Al ser elementos HTML nativos controlados en el DOM, se garantiza ancho exacto restringido (`w-full`), estilizado 100% fiel a los tokens Figma (`#252B33` en Dark, `#FFFFFF` en Light), soporte de teclado (`Enter`, `Espacio`, `Flechas`, `Esc`) y sincronización reactiva con el Store sin desbordamiento alguno.
+
+

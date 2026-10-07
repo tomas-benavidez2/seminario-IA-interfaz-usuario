@@ -120,10 +120,14 @@
     │   ├── spec.md              # Especificación de refinamiento mobile y Figma
     │   ├── plan.md              # Plan técnico de cabecera adaptativa y tokens
     │   └── tasks.md             # Tareas atómicas mobile (T1 a T3 completadas)
-    └── 003-ui-polish-icons-hero/
-        ├── spec.md              # Especificación de Hero abierto, selects e iconos
-        ├── plan.md              # Plan técnico de Open Canvas e iconografía SVG
-        └── tasks.md             # Tareas atómicas UI polish (T1 a T3 completadas)
+    ├── 003-ui-polish-icons-hero/
+    │   ├── spec.md              # Especificación de Hero abierto, selects e iconos
+    │   ├── plan.md              # Plan técnico de Open Canvas e iconografía SVG
+    │   └── tasks.md             # Tareas atómicas UI polish (T1 a T3 completadas)
+    └── 004-accessible-custom-selects/
+        ├── spec.md              # Especificación de Selectores WAI-ARIA Combobox / Listbox
+        ├── plan.md              # Plan técnico de componentes accesibles y contención
+        └── tasks.md             # Tareas atómicas combobox (T1 y T2 completadas)
 ```
 
 ---
@@ -149,8 +153,23 @@
 
 ---
 
+## 4.7 Ciclo de Excelencia: Selectores Desplegables WAI-ARIA Personalizados (004-accessible-custom-selects)
+- **Motivo de Iteración:** Eliminación de los elementos nativos `<select>` que provocaban desbordamiento horizontal en el gestor de ventanas de dispositivos móviles e incompatibilidades de contraste temático, sustituyéndolos por el estándar WAI-ARIA Combobox / Listbox totalmente renderizado en el DOM interno.
+- **Lecciones Registradas en Master Context:** Adición del Error 8 en `docs/contexto/errores-conocidos.md`.
+- **Tareas Ejecutadas y Auditadas:**
+  - **T1:** Reemplazo semántico en `index.html` (contenedores `.custom-combobox`, disparadores `button[role="combobox"]`, menús `ul[role="listbox"]` y opciones `li[role="option"]` con hidden inputs para sincronización transparente) y diseño en `style.css` con los 5 estados UI, rotación fluida de chevron SVG y contención estricta al 100% de ancho (`w-full`).
+  - **T2:** Controlador interactivo `CustomComboboxManager` en `app.js` con soporte integral de la *Prueba de la Mano Atada* (`ArrowDown`, `ArrowUp`, `Enter`, `Espacio`, `Escape`, `Tab`, `Home`, `End`), cierre por click exterior, sincronización reactiva con `OrderFormManager` para validación y generación de voucher `#LUNAR-XXXX`.
+- **Verificaciones Observables:**
+  - **Cero Desbordamiento Mobile (CA-S01):** 0px de desbordamiento horizontal verificado en 360px (Android) y 390px (iPhone).
+  - **Fidelidad Estética y Contraste (CA-S02):** Menús temáticos (`#252B33` en Dark, `#FFFFFF` en Light) con contraste de opciones superior a 5.3:1 (WCAG AA).
+  - **Prueba de la Mano Atada (CA-S03):** 100% operable por teclado con foco visible continuo.
+  - **Integración y Validación (CA-S04):** Limpieza de errores en tiempo real y despacho exitoso del formulario.
+- **Veredicto del Reviewer:** **APROBADO**.
+
+---
+
 ## 5. Dictamen Final del Coordinador
 
-El proyecto **Rocket Pizza Lunar** ha superado todas las compuertas de calidad, arquitectura y accesibilidad estipuladas para el Seminario de Interfaz de Usuario y Desarrollo de Software (iTec 2026), culminando con un acabado visual aeroespacial de grado profesional, libre de emojis genéricos, sin tarjetas anidadas y 100% operable por teclado bajo WCAG AA.
+El proyecto **Rocket Pizza Lunar** ha superado todas las compuertas de calidad, arquitectura y accesibilidad estipuladas para el Seminario de Interfaz de Usuario y Desarrollo de Software (iTec 2026), culminando con un acabado visual aeroespacial de grado profesional, libre de emojis genéricos, sin tarjetas anidadas, con selectores WAI-ARIA responsivos y 100% operable por teclado bajo WCAG AA.
 
 **Estado:** Aprobado para entrega y presentación oficial.

@@ -425,6 +425,203 @@ body {
 }
 
 /* ==========================================================================
+   4.5 SELECTORES DESPLEGABLES PERSONALIZADOS WAI-ARIA (.custom-combobox)
+   Cumplimiento WAI-ARIA Combobox / Listbox Pattern & WCAG AA (CA-T1.1, CA-T1.2)
+   ========================================================================== */
+
+.custom-combobox {
+  position: relative;
+  width: 100%;
+}
+
+/* 1. DISPARADOR (.combobox-trigger) - 5 ESTADOS INTERACTIVOS */
+.combobox-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem; /* rounded-xl */
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease, transform 0.1s ease;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Estado 2: Hover */
+.combobox-trigger:hover:not(:disabled):not([aria-disabled="true"]) {
+  border-color: var(--color-primary-hover);
+}
+
+/* Estado 3: Active */
+.combobox-trigger:active:not(:disabled):not([aria-disabled="true"]) {
+  border-color: var(--color-primary);
+  transform: scale(0.995);
+}
+
+/* Estado 4: Focus (:focus-visible) - Anillo de alto contraste */
+.combobox-trigger:focus,
+.combobox-trigger:focus-visible {
+  outline: none !important;
+  border-color: var(--color-primary) !important;
+  box-shadow: 0 0 0 2px var(--focus-ring-offset), 0 0 0 4px var(--focus-ring-color) !important;
+}
+
+/* Estado 5: Disabled */
+.combobox-trigger:disabled,
+.combobox-trigger[aria-disabled="true"] {
+  opacity: 0.5 !important;
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+  background-color: var(--color-surface-hover) !important;
+}
+
+/* Estado Inválido de Formulario (.is-invalid) */
+.combobox-trigger.is-invalid,
+input.is-invalid ~ .combobox-trigger,
+.custom-combobox.is-invalid .combobox-trigger {
+  border-color: var(--color-danger) !important;
+  background-color: rgba(229, 62, 62, 0.05);
+}
+
+.combobox-trigger.is-invalid:focus-visible,
+input.is-invalid ~ .combobox-trigger:focus-visible,
+.custom-combobox.is-invalid .combobox-trigger:focus-visible {
+  box-shadow: 0 0 0 2px var(--focus-ring-offset), 0 0 0 4px var(--color-danger) !important;
+}
+
+/* Rotación del Chevron SVG al abrirse (CA-T1.1) */
+.combobox-trigger[aria-expanded="true"] .chevron-icon {
+  transform: rotate(180deg);
+}
+
+.combobox-trigger .chevron-icon {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  color: var(--color-primary);
+}
+
+/* 2. MENÚ FLOTANTE (.combobox-menu) - Contención Estricta w-full */
+.combobox-menu {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(100% + 0.375rem);
+  width: 100%;
+  box-sizing: border-box;
+  background-color: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: 1rem; /* rounded-2xl */
+  box-shadow: var(--shadow-elevated);
+  z-index: 30;
+  max-height: 15rem; /* 240px / max-h-60 */
+  overflow-y: auto;
+  padding: 0.375rem;
+  margin: 0;
+  list-style: none;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+}
+
+.combobox-menu.hidden {
+  display: none !important;
+}
+
+/* Scrollbar fino accesible */
+.combobox-menu::-webkit-scrollbar {
+  width: 5px;
+}
+
+.combobox-menu::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.combobox-menu::-webkit-scrollbar-thumb {
+  background-color: var(--color-border);
+  border-radius: 4px;
+}
+
+.combobox-menu::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-text-muted);
+}
+
+/* 3. OPCIONES (.combobox-option) - Fidelidad Cromática y Estados */
+.combobox-option {
+  padding: 0.625rem 0.875rem;
+  border-radius: 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-text);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  transition: background-color 0.15s ease, color 0.15s ease, transform 0.1s ease;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+@media (min-width: 640px) {
+  .combobox-option {
+    font-size: 0.875rem;
+  }
+}
+
+/* Hover y Enfoque de Opción (Navegación Teclado) */
+.combobox-option:hover,
+.combobox-option.is-focused {
+  background-color: var(--color-surface-hover);
+  color: var(--color-primary);
+}
+
+[data-theme="light"] .combobox-option:hover,
+[data-theme="light"] .combobox-option.is-focused {
+  color: #B45309; /* Ámbar-700 para contraste >= 4.5:1 sobre fondo claro */
+}
+
+/* Active en Opción */
+.combobox-option:active {
+  transform: scale(0.99);
+}
+
+/* Opción Seleccionada (aria-selected="true") */
+.combobox-option[aria-selected="true"] {
+  background-color: rgba(255, 149, 0, 0.12);
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+[data-theme="light"] .combobox-option[aria-selected="true"] {
+  background-color: rgba(255, 149, 0, 0.15);
+  color: #B45309;
+}
+
+/* Icono Checkmark Verde (#55E16B / var(--color-secondary)) */
+.combobox-option .checkmark-icon {
+  display: none;
+  color: var(--color-secondary);
+  flex-shrink: 0;
+}
+
+.combobox-option[aria-selected="true"] .checkmark-icon {
+  display: block;
+}
+
+/* Opción Deshabilitada */
+.combobox-option:disabled,
+.combobox-option[aria-disabled="true"] {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ==========================================================================
    5. COMPONENTES WAI-ARIA DIALOG (<dialog>) Y BACKDROP
    ========================================================================== */
 

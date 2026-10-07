@@ -1110,21 +1110,52 @@
 
               <!-- Campo 2: Sector Lunar / Estación -->
               <div>
-                <label for="lunar-sector" class="block text-xs sm:text-sm font-bold text-[var(--color-text)] mb-1.5">
+                <label id="lunar-sector-label" for="lunar-sector-trigger" class="block text-xs sm:text-sm font-bold text-[var(--color-text)] mb-1.5">
                   Sector Lunar o Estación Orbital <span class="text-red-400" aria-hidden="true">*</span>
                 </label>
-                <select id="lunar-sector" 
-                        name="lunarSector" 
-                        required 
-                        class="select-field w-full pl-4 pr-11 py-3 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg)] text-[var(--color-text)] text-sm font-medium focus-ring transition-all"
-                        aria-describedby="lunar-sector-error">
-                  <option value="">Selecciona un sector de entrega...</option>
-                  <option value="domo-alfa">Domo Alfa (Base Minera)</option>
-                  <option value="crater-tycho">Cráter Tycho (Complejo Científico)</option>
-                  <option value="mar-tranquilidad">Mar de la Tranquilidad (Muelle Estelar)</option>
-                  <option value="estacion-mir3">Estación Mir-3 (Órbita Baja)</option>
-                  <option value="colonia-zogton">Colonia Zogtoniana (Nivel Bio-4)</option>
-                </select>
+                <div class="custom-combobox relative w-full" data-combobox="lunar-sector">
+                  <input type="hidden" id="lunar-sector" name="lunarSector" value="" required aria-describedby="lunar-sector-error">
+                  <button type="button" 
+                          id="lunar-sector-trigger" 
+                          role="combobox" 
+                          aria-haspopup="listbox" 
+                          aria-expanded="false" 
+                          aria-controls="lunar-sector-listbox" 
+                          aria-labelledby="lunar-sector-label lunar-sector-trigger" 
+                          aria-describedby="lunar-sector-error" 
+                          class="combobox-trigger w-full px-4 py-3 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg)] text-[var(--color-text)] text-sm font-medium focus-ring flex items-center justify-between text-left transition-all">
+                    <span class="combobox-trigger-text truncate text-[var(--color-text-muted)]">Selecciona un sector de entrega...</span>
+                    <svg class="chevron-icon w-4 h-4 text-[var(--color-primary)] flex-shrink-0 transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                  </button>
+                  <ul id="lunar-sector-listbox" 
+                      role="listbox" 
+                      aria-labelledby="lunar-sector-label" 
+                      tabindex="-1"
+                      class="combobox-menu hidden absolute left-0 right-0 top-full mt-1.5 z-30 rounded-2xl bg-[var(--color-surface)] border-2 border-[var(--color-border)] shadow-2xl max-h-60 overflow-y-auto space-y-1 p-1.5">
+                    <li id="opt-sector-domo-alfa" role="option" aria-selected="false" data-value="domo-alfa" class="combobox-option px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-medium cursor-pointer transition-all flex items-center justify-between hover:bg-[var(--color-surface-hover)]">
+                      <span>Domo Alfa (Base Minera)</span>
+                      <svg class="checkmark-icon w-4 h-4 text-[var(--color-secondary)] flex-shrink-0 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    </li>
+                    <li id="opt-sector-crater-tycho" role="option" aria-selected="false" data-value="crater-tycho" class="combobox-option px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-medium cursor-pointer transition-all flex items-center justify-between hover:bg-[var(--color-surface-hover)]">
+                      <span>Cráter Tycho (Complejo Científico)</span>
+                      <svg class="checkmark-icon w-4 h-4 text-[var(--color-secondary)] flex-shrink-0 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    </li>
+                    <li id="opt-sector-mar-tranquilidad" role="option" aria-selected="false" data-value="mar-tranquilidad" class="combobox-option px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-medium cursor-pointer transition-all flex items-center justify-between hover:bg-[var(--color-surface-hover)]">
+                      <span>Mar de la Tranquilidad (Muelle Estelar)</span>
+                      <svg class="checkmark-icon w-4 h-4 text-[var(--color-secondary)] flex-shrink-0 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    </li>
+                    <li id="opt-sector-estacion-mir3" role="option" aria-selected="false" data-value="estacion-mir3" class="combobox-option px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-medium cursor-pointer transition-all flex items-center justify-between hover:bg-[var(--color-surface-hover)]">
+                      <span>Estación Mir-3 (Órbita Baja)</span>
+                      <svg class="checkmark-icon w-4 h-4 text-[var(--color-secondary)] flex-shrink-0 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    </li>
+                    <li id="opt-sector-colonia-zogton" role="option" aria-selected="false" data-value="colonia-zogton" class="combobox-option px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-medium cursor-pointer transition-all flex items-center justify-between hover:bg-[var(--color-surface-hover)]">
+                      <span>Colonia Zogtoniana (Nivel Bio-4)</span>
+                      <svg class="checkmark-icon w-4 h-4 text-[var(--color-secondary)] flex-shrink-0 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    </li>
+                  </ul>
+                </div>
                 <span id="lunar-sector-error" class="input-error-msg hidden text-xs text-red-400 font-semibold mt-1.5 block"></span>
               </div>
 
@@ -1149,16 +1180,43 @@
 
               <!-- Campo 4: Método de Pago Galáctico -->
               <div>
-                <label for="payment-method" class="block text-xs sm:text-sm font-bold text-[var(--color-text)] mb-1.5">
+                <label id="payment-method-label" for="payment-method-trigger" class="block text-xs sm:text-sm font-bold text-[var(--color-text)] mb-1.5">
                   Método de Pago Galáctico
                 </label>
-                <select id="payment-method" 
-                        name="paymentMethod" 
-                        class="select-field w-full pl-4 pr-11 py-3 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg)] text-[var(--color-text)] text-sm font-medium focus-ring transition-all">
-                  <option value="credits">Créditos Lunares (LC) · Inmediato</option>
-                  <option value="cripto-nova">Cripto Nova (Blockchain Titán)</option>
-                  <option value="vales-flota">Vales de Ración de la Flota</option>
-                </select>
+                <div class="custom-combobox relative w-full" data-combobox="payment-method">
+                  <input type="hidden" id="payment-method" name="paymentMethod" value="credits">
+                  <button type="button" 
+                          id="payment-method-trigger" 
+                          role="combobox" 
+                          aria-haspopup="listbox" 
+                          aria-expanded="false" 
+                          aria-controls="payment-method-listbox" 
+                          aria-labelledby="payment-method-label payment-method-trigger" 
+                          class="combobox-trigger w-full px-4 py-3 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg)] text-[var(--color-text)] text-sm font-medium focus-ring flex items-center justify-between text-left transition-all">
+                    <span class="combobox-trigger-text truncate text-[var(--color-text)]">Créditos Lunares (LC) · Inmediato</span>
+                    <svg class="chevron-icon w-4 h-4 text-[var(--color-primary)] flex-shrink-0 transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                  </button>
+                  <ul id="payment-method-listbox" 
+                      role="listbox" 
+                      aria-labelledby="payment-method-label" 
+                      tabindex="-1"
+                      class="combobox-menu hidden absolute left-0 right-0 top-full mt-1.5 z-30 rounded-2xl bg-[var(--color-surface)] border-2 border-[var(--color-border)] shadow-2xl max-h-60 overflow-y-auto space-y-1 p-1.5">
+                    <li id="opt-payment-credits" role="option" aria-selected="true" data-value="credits" class="combobox-option px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-medium cursor-pointer transition-all flex items-center justify-between hover:bg-[var(--color-surface-hover)]">
+                      <span>Créditos Lunares (LC) · Inmediato</span>
+                      <svg class="checkmark-icon w-4 h-4 text-[var(--color-secondary)] flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    </li>
+                    <li id="opt-payment-cripto-nova" role="option" aria-selected="false" data-value="cripto-nova" class="combobox-option px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-medium cursor-pointer transition-all flex items-center justify-between hover:bg-[var(--color-surface-hover)]">
+                      <span>Cripto Nova (Blockchain Titán)</span>
+                      <svg class="checkmark-icon w-4 h-4 text-[var(--color-secondary)] flex-shrink-0 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    </li>
+                    <li id="opt-payment-vales-flota" role="option" aria-selected="false" data-value="vales-flota" class="combobox-option px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-medium cursor-pointer transition-all flex items-center justify-between hover:bg-[var(--color-surface-hover)]">
+                      <span>Vales de Ración de la Flota</span>
+                      <svg class="checkmark-icon w-4 h-4 text-[var(--color-secondary)] flex-shrink-0 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    </li>
+                  </ul>
+                </div>
               </div>
 
               <!-- Botón CTA Primario -->

@@ -1418,6 +1418,270 @@ function bindBaseEventListeners(store) {
 }
 
 // =============================================================================
+// 4.4 CUSTOMCOMBOBOXMANAGER: SELECTORES DESPLEGABLES WAI-ARIA ACCESIBLES (Tarea T2)
+// =============================================================================
+
+const CustomComboboxManager = {
+  instances: [],
+
+  init() {
+    this.instances = [];
+    const containers = document.querySelectorAll('.custom-combobox');
+    containers.forEach((container) => {
+      const instance = this.setupCombobox(container);
+      if (instance) {
+        this.instances.push(instance);
+      }
+    });
+
+    // Cierre al hacer click fuera de cualquier combobox (click-outside)
+    document.addEventListener('click', (e) => {
+      this.instances.forEach((inst) => {
+        if (!inst.container.contains(e.target) && inst.isOpen()) {
+          inst.close(false);
+        }
+      });
+    });
+  },
+
+  setupCombobox(container) {
+    const hiddenInput = container.querySelector('input[type="hidden"]');
+    const trigger = container.querySelector('.combobox-trigger');
+    const triggerText = container.querySelector('.combobox-trigger-text');
+    const menu = container.querySelector('.combobox-menu');
+    const options = Array.from(container.querySelectorAll('.combobox-option'));
+
+    if (!hiddenInput || !trigger || !menu || options.length === 0) return null;
+
+    // Guardar valores y estados iniciales por defecto para resetAll
+    const defaultVal = hiddenInput.value;
+    const defaultText = triggerText ? triggerText.textContent : '';
+    const isDefaultMuted = triggerText ? triggerText.classList.contains('text-[var(--color-text-muted)]') : false;
+
+    let focusedIndex = -1;
+
+    // Configurar tabindex="-1" en las opciones para permitir foco programático accesible
+    options.forEach((opt) => {
+      opt.setAttribute('tabindex', '-1');
+    });
+
+    const isOpen = () => trigger.getAttribute('aria-expanded') === 'true';
+
+    const setFocusIndex = (newIndex) => {
+      options.forEach((opt, idx) => {
+        if (idx === newIndex) {
+          opt.classList.add('is-focused');
+          opt.focus();
+          opt.scrollIntoView({ block: 'nearest' });
+        } else {
+          opt.classList.remove('is-focused');
+        }
+      });
+      focusedIndex = newIndex;
+    };
+
+    const open = () => {
+      // Cerrar cualquier otro combobox abierto
+      CustomComboboxManager.instances.forEach((other) => {
+        if (other.container !== container && other.isOpen()) {
+          other.close(false);
+        }
+      });
+
+      trigger.setAttribute('aria-expanded', 'true');
+      menu.classList.remove('hidden');
+
+      // Si hay una opción previamente seleccionada, mover el foco a ella; si no, a la primera
+      const selectedIndex = options.findIndex((opt) => opt.getAttribute('aria-selected') === 'true');
+      if (selectedIndex !== -1) {
+        setFocusIndex(selectedIndex);
+      } else if (options.length > 0) {
+        setFocusIndex(0);
+      }
+    };
+
+    const close = (returnFocus = true) => {
+      trigger.setAttribute('aria-expanded', 'false');
+      menu.classList.add('hidden');
+      options.forEach((opt) => opt.classList.remove('is-focused'));
+      focusedIndex = -1;
+      if (returnFocus) {
+        trigger.focus();
+      }
+    };
+
+    const selectOption = (optionEl) => {
+      const val = optionEl.dataset.value || '';
+      const textSpan = optionEl.querySelector('span');
+      const text = textSpan ? textSpan.textContent.trim() : optionEl.textContent.trim();
+
+      // 1. Actualizar el valor del input hidden asociado
+      hiddenInput.value = val;
+
+      // 2. Actualizar el texto visible del disparador
+      if (triggerText) {
+        triggerText.textContent = text;
+        if (val) {
+          triggerText.classList.remove('text-[var(--color-text-muted)]');
+          triggerText.classList.add('text-[var(--color-text)]');
+        } else {
+          triggerText.classList.remove('text-[var(--color-text)]');
+          triggerText.classList.add('text-[var(--color-text-muted)]');
+        }
+      }
+
+      // 3. Actualizar aria-selected y visibilidad de checkmark
+      options.forEach((opt) => {
+        const isMatch = (opt === optionEl);
+        opt.setAttribute('aria-selected', isMatch ? 'true' : 'false');
+        const checkmark = opt.querySelector('.checkmark-icon');
+        if (checkmark) {
+          if (isMatch) {
+            checkmark.classList.remove('hidden');
+          } else {
+            checkmark.classList.add('hidden');
+          }
+        }
+      });
+
+      // 4. Limpiar estado de error si lo tenía
+      trigger.classList.remove('is-invalid');
+      trigger.removeAttribute('aria-invalid');
+
+      // 5. Despachar eventos input y change en el input hidden
+      hiddenInput.dispatchEvent(new Event('input', { bubbles: true }));
+      hiddenInput.dispatchEvent(new Event('change', { bubbles: true }));
+
+      // 6. Cerrar menú y devolver el foco al disparador
+      close(true);
+    };
+
+    // Escuchadores de eventos para el botón disparador (Trigger)
+    trigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (isOpen()) {
+        close(true);
+      } else {
+        open();
+      }
+    });
+
+    trigger.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown' || e.key === 'ArrowUp' || e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        if (!isOpen()) {
+          open();
+          if (e.key === 'ArrowUp') {
+            const selectedIdx = options.findIndex((opt) => opt.getAttribute('aria-selected') === 'true');
+            if (selectedIdx === -1) {
+              setFocusIndex(options.length - 1);
+            }
+          }
+        } else {
+          if ((e.key === 'Enter' || e.key === ' ') && focusedIndex >= 0 && focusedIndex < options.length) {
+            selectOption(options[focusedIndex]);
+          }
+        }
+      } else if (e.key === 'Escape') {
+        if (isOpen()) {
+          e.preventDefault();
+          close(true);
+        }
+      }
+    });
+
+    // Escuchadores de eventos para cada opción del menú
+    options.forEach((opt, index) => {
+      opt.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        selectOption(opt);
+      });
+
+      opt.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          const nextIndex = (index + 1) % options.length;
+          setFocusIndex(nextIndex);
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          const prevIndex = (index - 1 + options.length) % options.length;
+          setFocusIndex(prevIndex);
+        } else if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          selectOption(opt);
+        } else if (e.key === 'Escape') {
+          e.preventDefault();
+          close(true);
+        } else if (e.key === 'Tab') {
+          close(false);
+        } else if (e.key === 'Home') {
+          e.preventDefault();
+          setFocusIndex(0);
+        } else if (e.key === 'End') {
+          e.preventDefault();
+          setFocusIndex(options.length - 1);
+        }
+      });
+
+      opt.addEventListener('mouseenter', () => {
+        options.forEach((o) => o.classList.remove('is-focused'));
+        opt.classList.add('is-focused');
+        focusedIndex = index;
+      });
+    });
+
+    const reset = () => {
+      hiddenInput.value = defaultVal;
+      if (triggerText) {
+        triggerText.textContent = defaultText;
+        if (isDefaultMuted) {
+          triggerText.classList.remove('text-[var(--color-text)]');
+          triggerText.classList.add('text-[var(--color-text-muted)]');
+        } else {
+          triggerText.classList.remove('text-[var(--color-text-muted)]');
+          triggerText.classList.add('text-[var(--color-text)]');
+        }
+      }
+
+      options.forEach((opt) => {
+        const val = opt.dataset.value || '';
+        const isSelected = (defaultVal !== '' && val === defaultVal);
+        opt.setAttribute('aria-selected', isSelected ? 'true' : 'false');
+        const checkmark = opt.querySelector('.checkmark-icon');
+        if (checkmark) {
+          if (isSelected) {
+            checkmark.classList.remove('hidden');
+          } else {
+            checkmark.classList.add('hidden');
+          }
+        }
+      });
+
+      trigger.classList.remove('is-invalid');
+      trigger.removeAttribute('aria-invalid');
+      close(false);
+    };
+
+    return {
+      container,
+      trigger,
+      menu,
+      hiddenInput,
+      isOpen,
+      open,
+      close,
+      selectOption,
+      reset
+    };
+  },
+
+  resetAll() {
+    this.instances.forEach((inst) => inst.reset());
+  }
+};
+
+// =============================================================================
 // 4.5 ORDERFORMMANAGER: VALIDACIÓN ACCESIBLE Y LANZAMIENTO ESPACIAL (Tarea T5)
 // =============================================================================
 
@@ -1475,6 +1739,13 @@ const OrderFormManager = {
       input.classList.remove('is-invalid');
       input.removeAttribute('aria-invalid');
     }
+    if (fieldId === 'lunar-sector') {
+      const trigger = document.getElementById('lunar-sector-trigger');
+      if (trigger) {
+        trigger.classList.remove('is-invalid');
+        trigger.removeAttribute('aria-invalid');
+      }
+    }
     if (errorMsg) {
       errorMsg.textContent = '';
       errorMsg.classList.add('hidden');
@@ -1493,6 +1764,13 @@ const OrderFormManager = {
     if (input) {
       input.classList.add('is-invalid');
       input.setAttribute('aria-invalid', 'true');
+    }
+    if (fieldId === 'lunar-sector') {
+      const trigger = document.getElementById('lunar-sector-trigger');
+      if (trigger) {
+        trigger.classList.add('is-invalid');
+        trigger.setAttribute('aria-invalid', 'true');
+      }
     }
     if (errorMsg) {
       errorMsg.textContent = message;
@@ -1523,7 +1801,7 @@ const OrderFormManager = {
     if (!sectorVal) {
       errors.push({
         id: 'lunar-sector',
-        element: sectorInput,
+        element: document.getElementById('lunar-sector-trigger') || sectorInput,
         message: 'Selecciona un sector espacial de entrega para trazar la trayectoria.'
       });
     }
@@ -1657,6 +1935,9 @@ const OrderFormManager = {
       el.classList.remove('is-invalid');
       el.removeAttribute('aria-invalid');
     });
+    if (typeof CustomComboboxManager !== 'undefined' && CustomComboboxManager.resetAll) {
+      CustomComboboxManager.resetAll();
+    }
     this.store.resetOrder();
 
     // Scroll suave y foco inicial
@@ -1689,9 +1970,10 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('[Rocket Pizza Lunar] Estado del carrito restaurado exitosamente desde localStorage.');
   }
 
-  // 4. Inicializar ThemeManager, A11yModalManager y OrderFormManager (Tarea T5)
+  // 4. Inicializar ThemeManager, A11yModalManager, CustomComboboxManager y OrderFormManager
   ThemeManager.init(appStore);
   A11yModalManager.init();
+  CustomComboboxManager.init();
   OrderFormManager.init(appStore);
 
   // 5. Conectar sincronizador reactivo entre el Store y el DOM
@@ -1713,8 +1995,9 @@ document.addEventListener('DOMContentLoaded', () => {
     BioValidator,
     A11yModalManager,
     PricingEngine,
+    CustomComboboxManager,
     OrderFormManager
   };
 
-  console.log('[Rocket Pizza Lunar] Módulos inicializados: Store, StorageManager, ThemeManager, BioValidator, A11yModalManager, PricingEngine, OrderFormManager (Tareas T1-T5 completadas).');
+  console.log('[Rocket Pizza Lunar] Módulos inicializados: Store, StorageManager, ThemeManager, BioValidator, A11yModalManager, PricingEngine, CustomComboboxManager, OrderFormManager.');
 });
