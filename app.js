@@ -138,7 +138,8 @@ const BioValidator = {
     'muzzarella': {
       id: 'muzzarella',
       name: 'Muzzarella Lunar',
-      emoji: '🧀',
+      iconSvg: '<svg class="w-4 h-4 text-amber-300 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 13.5C3 8 7 4 12 4c5 0 9 4 9 9.5a5.5 5.5 0 0 1-5.5 5.5H8.5A5.5 5.5 0 0 1 3 13.5z"/><circle cx="8" cy="11" r="1.5"/><circle cx="15" cy="13" r="2"/><circle cx="11" cy="15" r="1"/></svg>',
+      emoji: '<svg class="w-4 h-4 text-amber-300 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 13.5C3 8 7 4 12 4c5 0 9 4 9 9.5a5.5 5.5 0 0 1-5.5 5.5H8.5A5.5 5.5 0 0 1 3 13.5z"/><circle cx="8" cy="11" r="1.5"/><circle cx="15" cy="13" r="2"/><circle cx="11" cy="15" r="1"/></svg>',
       price: 2.0,
       toxicFor: [],
       category: 'terrestrial',
@@ -147,7 +148,8 @@ const BioValidator = {
     'pepperoni': {
       id: 'pepperoni',
       name: 'Pepperoni Galáctico',
-      emoji: '🍕',
+      iconSvg: '<svg class="w-4 h-4 text-red-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="9" r="6"/><circle cx="16" cy="15" r="5"/><circle cx="8" cy="8" r="1" fill="currentColor"/><circle cx="10" cy="11" r="0.8" fill="currentColor"/><circle cx="15" cy="14" r="0.8" fill="currentColor"/><circle cx="17" cy="16" r="0.8" fill="currentColor"/></svg>',
+      emoji: '<svg class="w-4 h-4 text-red-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="9" r="6"/><circle cx="16" cy="15" r="5"/><circle cx="8" cy="8" r="1" fill="currentColor"/><circle cx="10" cy="11" r="0.8" fill="currentColor"/><circle cx="15" cy="14" r="0.8" fill="currentColor"/><circle cx="17" cy="16" r="0.8" fill="currentColor"/></svg>',
       price: 3.0,
       toxicFor: [],
       category: 'terrestrial',
@@ -156,7 +158,8 @@ const BioValidator = {
     'bacon': {
       id: 'bacon',
       name: 'Bacon Cósmico',
-      emoji: '🥓',
+      iconSvg: '<svg class="w-4 h-4 text-rose-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8c3-2 6 2 9 0s6-2 9 0v4c-3-2-6 2-9 0s-6-2-9 0V8z"/><path d="M3 15c3-2 6 2 9 0s6-2 9 0v2c-3-2-6 2-9 0s-6-2-9 0v-2z"/></svg>',
+      emoji: '<svg class="w-4 h-4 text-rose-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8c3-2 6 2 9 0s6-2 9 0v4c-3-2-6 2-9 0s-6-2-9 0V8z"/><path d="M3 15c3-2 6 2 9 0s6-2 9 0v2c-3-2-6 2-9 0s-6-2-9 0v-2z"/></svg>',
       price: 3.0,
       toxicFor: [],
       category: 'terrestrial',
@@ -165,7 +168,8 @@ const BioValidator = {
     'provolone': {
       id: 'provolone',
       name: 'Provolone de Asteroide',
-      emoji: '🧀',
+      iconSvg: '<svg class="w-4 h-4 text-amber-200 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 19 18-3V9L3 12v7z"/><path d="m3 12 9-8 9 5"/><circle cx="8" cy="15" r="1"/><circle cx="14" cy="13" r="1.25"/></svg>',
+      emoji: '<svg class="w-4 h-4 text-amber-200 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 19 18-3V9L3 12v7z"/><path d="m3 12 9-8 9 5"/><circle cx="8" cy="15" r="1"/><circle cx="14" cy="13" r="1.25"/></svg>',
       price: 2.5,
       toxicFor: [],
       category: 'terrestrial',
@@ -174,7 +178,8 @@ const BioValidator = {
     'morron': {
       id: 'morron',
       name: 'Morrón de Marte',
-      emoji: '🫑',
+      iconSvg: '<svg class="w-4 h-4 text-emerald-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v4"/><path d="M9 4c2 .5 4 .5 6 0"/><path d="M6 9c0 7 2 12 6 12s6-5 6-12a4 4 0 0 0-4-3c-1.5 1-2.5 1-4 0a4 4 0 0 0-4 3z"/><path d="M10 9c0 6 1 10 2 10s2-4 2-10"/></svg>',
+      emoji: '<svg class="w-4 h-4 text-emerald-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v4"/><path d="M9 4c2 .5 4 .5 6 0"/><path d="M6 9c0 7 2 12 6 12s6-5 6-12a4 4 0 0 0-4-3c-1.5 1-2.5 1-4 0a4 4 0 0 0-4 3z"/><path d="M10 9c0 6 1 10 2 10s2-4 2-10"/></svg>',
       price: 1.5,
       toxicFor: [],
       category: 'terrestrial',
@@ -183,7 +188,8 @@ const BioValidator = {
     'aceitunas': {
       id: 'aceitunas',
       name: 'Aceitunas de Ganímedes',
-      emoji: '🫒',
+      iconSvg: '<svg class="w-4 h-4 text-lime-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="10" cy="13" rx="6" ry="7"/><ellipse cx="10" cy="13" rx="2" ry="2.5"/><ellipse cx="17" cy="9" rx="4" ry="5"/><circle cx="17" cy="9" r="1.2"/></svg>',
+      emoji: '<svg class="w-4 h-4 text-lime-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="10" cy="13" rx="6" ry="7"/><ellipse cx="10" cy="13" rx="2" ry="2.5"/><ellipse cx="17" cy="9" rx="4" ry="5"/><circle cx="17" cy="9" r="1.2"/></svg>',
       price: 1.5,
       toxicFor: [],
       category: 'terrestrial',
@@ -192,7 +198,8 @@ const BioValidator = {
     'space-rock': {
       id: 'space-rock',
       name: 'Roca Espacial',
-      emoji: '🪨',
+      iconSvg: '<svg class="w-4 h-4 text-slate-300 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m7 3 10 1 4 7-3 9-11 1-5-7 5-11z"/><path d="m7 3 3 7 8-6"/><path d="M10 10v11"/><path d="m10 10 8 4 3-3"/></svg>',
+      emoji: '<svg class="w-4 h-4 text-slate-300 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m7 3 10 1 4 7-3 9-11 1-5-7 5-11z"/><path d="m7 3 3 7 8-6"/><path d="M10 10v11"/><path d="m10 10 8 4 3-3"/></svg>',
       price: 4.0,
       toxicFor: ['human'],
       category: 'cosmic',
@@ -202,7 +209,8 @@ const BioValidator = {
     'methane-drink': {
       id: 'methane-drink',
       name: 'Bebida Metano',
-      emoji: '🧪',
+      iconSvg: '<svg class="w-4 h-4 text-cyan-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2v5.5L4.5 18a2 2 0 0 0 1.7 3h11.6a2 2 0 0 0 1.7-3L14 7.5V2"/><path d="M8.5 2h7"/><path d="M7 15c2-1 4-1 6 0s4 1 6 0"/><circle cx="12" cy="11" r="1"/></svg>',
+      emoji: '<svg class="w-4 h-4 text-cyan-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2v5.5L4.5 18a2 2 0 0 0 1.7 3h11.6a2 2 0 0 0 1.7-3L14 7.5V2"/><path d="M8.5 2h7"/><path d="M7 15c2-1 4-1 6 0s4 1 6 0"/><circle cx="12" cy="11" r="1"/></svg>',
       price: 3.5,
       toxicFor: ['human'],
       category: 'cosmic',
@@ -212,7 +220,8 @@ const BioValidator = {
     'solar-sauce': {
       id: 'solar-sauce',
       name: 'Salsa Solar',
-      emoji: '☀️',
+      iconSvg: '<svg class="w-4 h-4 text-amber-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v3M12 20v3M1 12h3M20 12h3"/><path d="m4.2 4.2 2.1 2.1M17.7 17.7l2.1 2.1M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>',
+      emoji: '<svg class="w-4 h-4 text-amber-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v3M12 20v3M1 12h3M20 12h3"/><path d="m4.2 4.2 2.1 2.1M17.7 17.7l2.1 2.1M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>',
       price: 2.0,
       toxicFor: [],
       category: 'cosmic',
@@ -221,7 +230,8 @@ const BioValidator = {
     'plasma-crystals': {
       id: 'plasma-crystals',
       name: 'Cristales de Plasma',
-      emoji: '💎',
+      iconSvg: '<svg class="w-4 h-4 text-fuchsia-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12l4 6-10 12L2 9l4-6z"/><path d="M2 9h20"/><path d="m10 3 2 6-2 12"/><path d="m14 3-2 6 2 12"/></svg>',
+      emoji: '<svg class="w-4 h-4 text-fuchsia-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12l4 6-10 12L2 9l4-6z"/><path d="M2 9h20"/><path d="m10 3 2 6-2 12"/><path d="m14 3-2 6 2 12"/></svg>',
       price: 4.5,
       toxicFor: ['human'],
       category: 'cosmic',
@@ -315,7 +325,8 @@ const PricingEngine = {
           ingredientsDetails.push({
             id: item.id,
             name: item.name,
-            emoji: item.emoji,
+            iconSvg: item.iconSvg || '',
+            emoji: item.emoji || '',
             price: item.price
           });
         }
@@ -1082,10 +1093,10 @@ function syncDOMWithState(state) {
     const bannerSpeciesBadge = bioBanner.querySelector('.hero-species-badge');
     const bannerText = bioBanner.querySelector('.hero-bio-text');
     if (isHuman) {
-      if (bannerSpeciesBadge) bannerSpeciesBadge.textContent = '👫 TRIPULACIÓN HUMANA';
+      if (bannerSpeciesBadge) bannerSpeciesBadge.textContent = 'TRIPULACIÓN HUMANA (BIO-SEGURA)';
       if (bannerText) bannerText.textContent = 'Menú verificado 100% libre de compuestos de metano o radiación ionizante.';
     } else {
-      if (bannerSpeciesBadge) bannerSpeciesBadge.textContent = '👽 ALIEN ZOGTONIANO (50% OFF)';
+      if (bannerSpeciesBadge) bannerSpeciesBadge.textContent = 'ESPECIE ZOGTONIANA (SUBSIDIO 50%)';
       if (bannerText) bannerText.textContent = 'Protocolo celular activo: acceso exclusivo a PowerUps y compuestos cósmicos ionizados.';
     }
   }
@@ -1128,9 +1139,9 @@ function syncDOMWithState(state) {
     card.setAttribute('aria-checked', isSelected ? 'true' : 'false');
     card.classList.toggle('is-selected', isSelected);
 
-    const checkIndicator = card.querySelector('.ingredient-check-text');
+    const checkIndicator = card.querySelector('.ingredient-check-text') || card.querySelector('.status-indicator');
     if (checkIndicator) {
-      checkIndicator.textContent = isSelected ? 'Añadido ✓' : 'Añadir +';
+      checkIndicator.textContent = isSelected ? 'Añadido' : 'Añadir';
     }
   });
 
@@ -1205,7 +1216,7 @@ function syncDOMWithState(state) {
         return `
           <li class="flex items-center justify-between py-0.5">
             <span class="flex items-center gap-1.5">
-              <span>${ing.emoji}</span>
+              <span class="inline-flex items-center flex-shrink-0" aria-hidden="true">${ing.iconSvg || ing.emoji}</span>
               <span class="text-[var(--color-text)] font-medium">${ing.name}</span>
             </span>
             <div class="flex items-center gap-2">
@@ -1213,8 +1224,11 @@ function syncDOMWithState(state) {
               <button type="button" 
                       data-remove-ingredient="${ing.id}" 
                       aria-label="Quitar ${ing.name} de la orden"
-                      class="text-xs text-red-400 hover:text-red-300 transition-colors p-0.5">
-                ✕
+                      class="text-xs text-red-400 hover:text-red-300 transition-colors p-0.5 flex items-center justify-center">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
               </button>
             </div>
           </li>
@@ -1549,7 +1563,14 @@ const OrderFormManager = {
       // CA-T5.1: Mostrar resumen de errores en contenedor con role="alert" y aria-live="polite"
       if (this.errorContainer) {
         this.errorContainer.innerHTML = `
-          <strong class="block font-bold mb-1">⚠️ Error en los parámetros de telemetría:</strong>
+          <strong class="flex items-center gap-1.5 font-bold mb-1">
+            <svg class="w-4 h-4 text-red-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/>
+              <line x1="12" y1="9" x2="12" y2="13"/>
+              <line x1="12" y1="17" x2="12.01" y2="17"/>
+            </svg>
+            <span>Error en los parámetros de telemetría:</span>
+          </strong>
           <ul class="list-disc list-inside space-y-0.5">
             ${result.errors.map(err => `<li>${err.message}</li>`).join('')}
           </ul>

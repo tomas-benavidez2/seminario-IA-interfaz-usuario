@@ -116,10 +116,14 @@
     │   ├── spec.md              # Especificación funcional con sintaxis EARS
     │   ├── plan.md              # Plan técnico de implementación
     │   └── tasks.md             # Tareas atómicas de desarrollo (T1 a T5 completadas)
-    └── 002-mobile-figma-refinement/
-        ├── spec.md              # Especificación de refinamiento mobile y Figma
-        ├── plan.md              # Plan técnico de cabecera adaptativa y tokens
-        └── tasks.md             # Tareas atómicas mobile (T1 a T3 completadas)
+    ├── 002-mobile-figma-refinement/
+    │   ├── spec.md              # Especificación de refinamiento mobile y Figma
+    │   ├── plan.md              # Plan técnico de cabecera adaptativa y tokens
+    │   └── tasks.md             # Tareas atómicas mobile (T1 a T3 completadas)
+    └── 003-ui-polish-icons-hero/
+        ├── spec.md              # Especificación de Hero abierto, selects e iconos
+        ├── plan.md              # Plan técnico de Open Canvas e iconografía SVG
+        └── tasks.md             # Tareas atómicas UI polish (T1 a T3 completadas)
 ```
 
 ---
@@ -135,8 +139,18 @@
 
 ---
 
+## 4.6 Ciclo Final: Hero Abierto, Desplegables e Iconos Sci-Fi (003-ui-polish-icons-hero)
+- **Motivo de Iteración:** Eliminación del antipatrón de tarjetas anidadas en el Hero, diseño Open Canvas en 2 columnas en desktop, estilización completa de `<select>` con chevron SVG y opciones temáticas sin desbordamiento, y sustitución total de emojis por iconos vectoriales SVG en línea estilo Sci-Fi minimalista.
+- **Tareas Ejecutadas y Auditadas:**
+  - **T1:** Rediseño del Hero en Open Canvas de 2 columnas (`lg:col-span-7` para texto/CTA y `lg:col-span-5` para HUD biomédico `#hero-bio-banner` sin tarjeta exterior redundante).
+  - **T2:** Estilizado universal de `.select-field` con `appearance: none`, chevron SVG `#FF9500` y `<option>` con fondos oscuros/claros adaptativos y textos compactos anti-overflow en mobile.
+  - **T3:** Erradicación total de emojis genéricos en `index.html` y `app.js`, reemplazados por SVGs con trazo geométrico fino (1.75px) y `aria-hidden="true"` (cohete aerodinámico, casco de astronauta, glifo alien bioenergético, catálogo de 10 toppings y controles interactivos).
+- **Veredicto del Reviewer:** **APROBADO**.
+
+---
+
 ## 5. Dictamen Final del Coordinador
 
-El proyecto **Rocket Pizza Lunar** ha superado todas las compuertas de calidad, arquitectura y accesibilidad estipuladas para el Seminario de Interfaz de Usuario y Desarrollo de Software (iTec 2026), incluyendo la iteración de refinamiento móvil y fidelidad rigurosa a Figma. La implementación es sólida, modular, libre de dependencias superfluas y 100% accesible.
+El proyecto **Rocket Pizza Lunar** ha superado todas las compuertas de calidad, arquitectura y accesibilidad estipuladas para el Seminario de Interfaz de Usuario y Desarrollo de Software (iTec 2026), culminando con un acabado visual aeroespacial de grado profesional, libre de emojis genéricos, sin tarjetas anidadas y 100% operable por teclado bajo WCAG AA.
 
 **Estado:** Aprobado para entrega y presentación oficial.

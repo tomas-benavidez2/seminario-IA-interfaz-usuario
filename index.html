@@ -63,7 +63,12 @@
       
       <!-- Logo y Marca de Rocket Pizza Lunar (order-1 en mobile y desktop) -->
       <a href="#" class="order-1 flex items-center gap-1.5 sm:gap-3 group text-decoration-none focus-ring rounded-2xl p-1 transition-transform" aria-label="Rocket Pizza Lunar - Inicio">
-        <span class="text-2xl sm:text-4xl transform group-hover:scale-110 group-active:scale-95 transition-transform" aria-hidden="true">🚀</span>
+        <svg class="w-7 h-7 sm:w-9 sm:h-9 text-[var(--color-primary)] transform group-hover:scale-110 group-active:scale-95 transition-transform flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
+          <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
+          <path d="M9 12H4s.55-3.03 2-4.5c1.45-1.47 4.5-2 4.5-2"/>
+          <path d="M12 15v5s3.03-.55 4.5-2c1.47-1.45 2-4.5 2-4.5"/>
+        </svg>
         <div class="flex flex-col">
           <span class="text-sm sm:text-lg md:text-xl font-black tracking-tight text-[var(--color-text)] flex items-center gap-1">
             <span class="text-[var(--color-primary)]">Rocket Pizza</span> <span class="hidden sm:inline text-[var(--color-text)]">Lunar</span>
@@ -98,7 +103,11 @@
            id="cart-badge-btn" 
            class="btn-cart flex items-center gap-1.5 sm:gap-2 px-2 py-1.5 sm:px-4 sm:py-2.5 rounded-xl bg-[var(--color-surface)] border border-[var(--color-border)] hover:border-[var(--color-primary)] text-[var(--color-text)] transition-all focus-ring"
            aria-label="Ver resumen de orden espacial: 0 ingredientes, total 12 Créditos Lunares">
-          <span aria-hidden="true" class="text-base sm:text-lg">🛒</span>
+          <svg class="w-4 h-4 sm:w-5 sm:h-5 text-current flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="8" cy="21" r="1"/>
+            <circle cx="19" cy="21" r="1"/>
+            <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/>
+          </svg>
           <span class="hidden md:inline text-xs font-bold uppercase tracking-wider text-[var(--color-text-muted)]">Orden</span>
           <span id="cart-badge-count" class="badge-count px-2 py-0.5 text-xs rounded-full">0</span>
           <span id="cart-badge-total" class="font-black text-xs sm:text-sm text-[var(--color-primary)]">
@@ -112,7 +121,7 @@
         <div role="radiogroup" aria-labelledby="species-selector-label" class="species-selector-group flex items-center p-1 rounded-2xl bg-[var(--color-bg)] border border-[var(--color-border)] shadow-inner">
           <span id="species-selector-label" class="sr-only">Selecciona tu Especie de Tripulación</span>
           
-          <!-- Botón Humano -->
+          <!-- Botón Humano: Casco de astronauta en SVG -->
           <button type="button" 
                   id="species-human" 
                   role="radio" 
@@ -120,11 +129,15 @@
                   tabindex="0"
                   data-species="human" 
                   class="species-option-btn is-active flex items-center gap-1.5 px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl text-xs sm:text-sm font-bold transition-all focus-ring">
-            <span aria-hidden="true" class="text-base sm:text-lg">👫</span>
+            <svg class="w-4 h-4 sm:w-5 sm:h-5 text-current flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 2a8 8 0 0 0-8 8v3a6 6 0 0 0 4 5.6V21a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.4A6 6 0 0 0 20 13v-3a8 8 0 0 0-8-8z"/>
+              <rect x="7" y="8" width="10" height="6" rx="3"/>
+              <path d="M10 11h4"/>
+            </svg>
             <span>Humano</span>
           </button>
           
-          <!-- Botón Alien Zogtoniano -->
+          <!-- Botón Alien Zogtoniano: Glifo extraterrestre en SVG con óptica bioenergética -->
           <button type="button" 
                   id="species-alien" 
                   role="radio" 
@@ -132,7 +145,12 @@
                   tabindex="-1"
                   data-species="alien" 
                   class="species-option-btn flex items-center gap-1.5 px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl text-xs sm:text-sm font-bold transition-all focus-ring">
-            <span aria-hidden="true" class="text-base sm:text-lg">👽</span>
+            <svg class="w-4 h-4 sm:w-5 sm:h-5 text-current flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 2C6.5 2 3 6.5 3 11.5c0 4.8 4.2 9.2 8.3 10.3a1.8 1.8 0 0 0 1.4 0c4.1-1.1 8.3-5.5 8.3-10.3C21 6.5 17.5 2 12 2z"/>
+              <path d="M7 10c.8-1.5 2.5-2 3.5-.8s.6 2.8-.2 3.6-2.5.4-3.2-.8c-.3-.5-.3-1.4-.1-2z"/>
+              <path d="M17 10c-.8-1.5-2.5-2-3.5-.8s-.6 2.8.2 3.6 2.5.4 3.2-.8c.3-.5.3-1.4.1-2z"/>
+              <circle cx="12" cy="17" r="1"/>
+            </svg>
             <span>Alien Zogtoniano</span>
             <span class="badge-alien-discount text-[10px] font-black px-1.5 py-0.5 rounded-md bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 ml-1">
               -50%
@@ -147,42 +165,94 @@
   <!-- Contenido Principal -->
   <main id="main-content" class="pt-36 md:pt-24 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 focus:outline-none" tabindex="-1">
 
-    <!-- SECCIÓN 1: HERO CÓSMICO -->
-    <section id="hero" aria-labelledby="hero-title" class="mb-14 py-10 px-6 sm:px-10 lg:px-12 rounded-3xl hero-card border border-[var(--color-border)] bg-[var(--color-surface)] shadow-2xl transition-all duration-300">
-      <div class="max-w-4xl">
-        <!-- Badge de Propuesta de Valor -->
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-extrabold uppercase tracking-wider bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 mb-5">
-          <span aria-hidden="true">🛰️</span>
-          <span>Entrega Orbital Hipersónica en 15 Minutos Luz</span>
-        </div>
-
-        <!-- Jerarquía Gestalt: Título Principal Adaptativo -->
-        <h1 id="hero-title" class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-[var(--color-text)] leading-tight mb-5">
-          Pizzas Terrestres Tradicionales con Entrega Orbital
-        </h1>
-
-        <!-- Subtítulo / Descripción -->
-        <p id="hero-desc" class="text-base sm:text-lg md:text-xl text-[var(--color-text-muted)] font-normal leading-relaxed mb-8 max-w-3xl">
-          Masa estelar horneada al vacío a gravedad cero con ingredientes certificados de alto rendimiento. Adaptamos las recetas según el metabolismo de tu especie y subsidiamos el 50% para ciudadanos de Zogton.
-        </p>
-
-        <!-- Banner de Biocompatibilidad Informativa -->
-        <div id="hero-bio-banner" class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-5 rounded-2xl bg-[var(--color-bg)] border border-[var(--color-border)] shadow-sm" role="status" aria-live="polite">
-          <div class="flex items-center gap-3.5">
-            <span class="text-3xl" aria-hidden="true">🛡️</span>
-            <div>
-              <strong class="block text-sm sm:text-base font-bold text-[var(--color-text)]">
-                Protocolo BioMédico Activo: Fisiología Humana
-              </strong>
-              <span id="bio-banner-status" class="text-xs sm:text-sm text-[var(--color-text-muted)]">
-                Los compuestos incompatibles (roca espacial, metano y plasma) permanecen restringidos por seguridad.
-              </span>
-            </div>
+    <!-- SECCIÓN 1: HERO CÓSMICO (Open Canvas de 2 Columnas) -->
+    <section id="hero" aria-labelledby="hero-title" class="mb-16 pt-2 pb-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        <!-- Columna izquierda (lg:col-span-7) con badge, h1, subtitulo y boton de salto -->
+        <div class="lg:col-span-7 flex flex-col items-start">
+          <!-- Badge de Propuesta de Valor -->
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-extrabold uppercase tracking-wider bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 mb-5">
+            <svg class="w-4 h-4 text-emerald-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="3"/>
+              <path d="M4.93 4.93 9.17 9.17"/>
+              <path d="M14.83 14.83 19.07 19.07"/>
+              <path d="M14.83 9.17 19.07 4.93"/>
+              <path d="M4.93 19.07 9.17 14.83"/>
+              <path d="M2 12h3"/>
+              <path d="M19 12h3"/>
+            </svg>
+            <span>Entrega Orbital Hipersónica en 15 Minutos Luz</span>
           </div>
-          <a href="#builder" class="btn-primary force-text-dark inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-sm font-extrabold tracking-wide shadow-lg focus-ring transition-all w-full sm:w-auto">
+
+          <!-- Jerarquía Gestalt: Título Principal Adaptativo -->
+          <h1 id="hero-title" class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-[var(--color-text)] leading-tight mb-5">
+            Pizzas Terrestres Tradicionales con Entrega Orbital
+          </h1>
+
+          <!-- Subtítulo / Descripción -->
+          <p id="hero-desc" class="text-base sm:text-lg md:text-xl text-[var(--color-text-muted)] font-normal leading-relaxed mb-8 max-w-2xl">
+            Masa estelar horneada al vacío a gravedad cero con ingredientes certificados de alto rendimiento. Adaptamos las recetas según el metabolismo de tu especie y subsidiamos el 50% para ciudadanos de Zogton.
+          </p>
+
+          <!-- Botón de Salto Rápido hacia el Configurador -->
+          <a href="#builder" class="btn-primary force-text-dark inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl text-sm sm:text-base font-extrabold tracking-wide shadow-lg focus-ring transition-all w-full sm:w-auto">
             <span>Configurar Mi Pizza</span>
             <span aria-hidden="true">↓</span>
           </a>
+        </div>
+
+        <!-- Columna derecha (lg:col-span-5) con el contenedor #hero-bio-banner estilizado como panel HUD de telemetria medica sin anidamiento visual -->
+        <div class="lg:col-span-5 w-full">
+          <div id="hero-bio-banner" class="hud-panel p-6 sm:p-7" role="status" aria-live="polite">
+            <!-- Cabecera de Telemetría HUD -->
+            <div class="flex items-center justify-between pb-4 border-b border-[var(--color-border)] mb-4">
+              <div class="flex items-center gap-2.5">
+                <span class="hud-pulse-dot" aria-hidden="true"></span>
+                <span class="text-xs font-black uppercase tracking-wider text-[var(--color-text-muted)]">
+                  Telemetría BioMédica
+                </span>
+              </div>
+              <span class="text-[11px] font-bold px-2 py-0.5 rounded-md bg-[var(--color-bg)] text-emerald-400 border border-emerald-500/20">
+                EN VIVO
+              </span>
+            </div>
+
+            <!-- Identificación de Especie y Estado -->
+            <div class="space-y-3">
+              <div class="flex items-center gap-2">
+                <svg class="w-5 h-5 sm:w-6 sm:h-6 text-[var(--color-secondary)] flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                  <path d="M9 12l2 2 4-4"/>
+                </svg>
+                <strong class="hero-species-badge text-sm sm:text-base font-black tracking-tight text-[var(--color-text)]">
+                  TRIPULACIÓN HUMANA (BIO-SEGURA)
+                </strong>
+              </div>
+              <p id="bio-banner-status" class="hero-bio-text text-xs sm:text-sm text-[var(--color-text-muted)] leading-relaxed">
+                Menú verificado 100% libre de compuestos de metano o radiación ionizante.
+              </p>
+            </div>
+
+            <!-- Telemetría Aeroespacial en Tiempo Real -->
+            <div class="grid grid-cols-2 gap-2.5 pt-4 mt-4 border-t border-[var(--color-border)] text-xs">
+              <div class="p-2.5 rounded-xl bg-[var(--color-bg)] border border-[var(--color-border)]/60">
+                <span class="block text-[10px] font-bold uppercase tracking-wider text-[var(--color-text-muted)] mb-0.5">Biocompatibilidad</span>
+                <span class="font-black text-xs text-[var(--color-secondary)]">100% NOMINAL</span>
+              </div>
+              <div class="p-2.5 rounded-xl bg-[var(--color-bg)] border border-[var(--color-border)]/60">
+                <span class="block text-[10px] font-bold uppercase tracking-wider text-[var(--color-text-muted)] mb-0.5">Gravedad Base</span>
+                <span class="font-black text-xs text-[var(--color-text)]">0.16 g (Lunar)</span>
+              </div>
+              <div class="p-2.5 rounded-xl bg-[var(--color-bg)] border border-[var(--color-border)]/60">
+                <span class="block text-[10px] font-bold uppercase tracking-wider text-[var(--color-text-muted)] mb-0.5">Blindaje Iónico</span>
+                <span class="font-black text-xs text-emerald-400">ACTIVO (99.8%)</span>
+              </div>
+              <div class="p-2.5 rounded-xl bg-[var(--color-bg)] border border-[var(--color-border)]/60">
+                <span class="block text-[10px] font-bold uppercase tracking-wider text-[var(--color-text-muted)] mb-0.5">Tránsito Máximo</span>
+                <span class="font-black text-xs text-[var(--color-primary)]">15 min luz</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -223,7 +293,10 @@
                   data-price="8" 
                   class="card-option size-card p-5 rounded-2xl border text-left flex flex-col justify-between transition-all focus-ring">
             <div class="flex justify-between items-start mb-3">
-              <span class="text-2xl" aria-hidden="true">🍕</span>
+              <svg class="w-6 h-6 text-[var(--color-primary)] flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 3a9 9 0 0 1 7.5 4.5L12 21 4.5 7.5A9 9 0 0 1 12 3z"/>
+                <circle cx="12" cy="10" r="1.25"/>
+              </svg>
               <span class="price-tag font-black text-lg text-[var(--color-primary)]">8 LC</span>
             </div>
             <div>
@@ -242,7 +315,13 @@
                   data-price="12" 
                   class="card-option size-card is-selected p-5 rounded-2xl border text-left flex flex-col justify-between transition-all focus-ring">
             <div class="flex justify-between items-start mb-3">
-              <span class="text-2xl" aria-hidden="true">🍕🍕</span>
+              <svg class="w-6 h-6 text-[var(--color-primary)] flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="9"/>
+                <path d="M12 3v18"/>
+                <path d="M3 12h18"/>
+                <circle cx="8" cy="8" r="1"/>
+                <circle cx="16" cy="16" r="1"/>
+              </svg>
               <span class="price-tag font-black text-lg text-[var(--color-primary)]">12 LC</span>
             </div>
             <div>
@@ -264,7 +343,11 @@
                   data-price="16" 
                   class="card-option size-card p-5 rounded-2xl border text-left flex flex-col justify-between transition-all focus-ring">
             <div class="flex justify-between items-start mb-3">
-              <span class="text-2xl" aria-hidden="true">🛸</span>
+              <svg class="w-6 h-6 text-[var(--color-primary)] flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <ellipse cx="12" cy="12" rx="10" ry="4.5"/>
+                <path d="M7 12c0 3.5 2.2 6 5 6s5-2.5 5-6"/>
+                <circle cx="12" cy="12" r="2"/>
+              </svg>
               <span class="price-tag font-black text-lg text-[var(--color-primary)]">16 LC</span>
             </div>
             <div>
@@ -283,7 +366,12 @@
                   data-price="22" 
                   class="card-option size-card p-5 rounded-2xl border text-left flex flex-col justify-between transition-all focus-ring">
             <div class="flex justify-between items-start mb-3">
-              <span class="text-2xl" aria-hidden="true">🪐</span>
+              <svg class="w-6 h-6 text-[var(--color-primary)] flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="6"/>
+                <path d="M2.5 14.5c2.5 4 8 6.5 13.5 4.5s8-6.5 5.5-10.5"/>
+                <path d="M21.5 9.5c-2.5-4-8-6.5-13.5-4.5S0 11.5 2.5 15.5"/>
+                <circle cx="10" cy="11" r="1.25"/>
+              </svg>
               <span class="price-tag font-black text-lg text-[var(--color-primary)]">22 LC</span>
             </div>
             <div>
@@ -317,7 +405,12 @@
                   class="card-option crust-card is-selected p-5 rounded-2xl border text-left transition-all focus-ring">
             <div class="flex items-center justify-between mb-2">
               <strong class="text-base font-bold text-[var(--color-text)]">Fina Lunar</strong>
-              <span class="text-xl" aria-hidden="true">🌾</span>
+              <svg class="w-5 h-5 text-emerald-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 22v-9"/>
+                <path d="M12 13a5 5 0 0 0 5-5c0-3-5-5-5-5s-5 2-5 5a5 5 0 0 0 5 5z"/>
+                <path d="M7 16a4 4 0 0 0 5-3"/>
+                <path d="M17 16a4 4 0 0 1-5-3"/>
+              </svg>
             </div>
             <p class="text-xs text-[var(--color-text-muted)] leading-relaxed">
               Receta clásica de la Tierra con harina de trigo cultivada en domos hidropónicos. Suave, crocante y dorada al horno solar.
@@ -334,7 +427,13 @@
                   class="card-option crust-card p-5 rounded-2xl border text-left transition-all focus-ring">
             <div class="flex items-center justify-between mb-2">
               <strong class="text-base font-bold text-[var(--color-text)]">Volcánica (Picante)</strong>
-              <span class="text-xl" aria-hidden="true">🌋</span>
+              <svg class="w-5 h-5 text-amber-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m3 21 6.5-14h5L21 21H3z"/>
+                <path d="m9 7 1.5 3.5 3-2 1.5 2.5"/>
+                <path d="M12 2v3"/>
+                <path d="m7.5 3.5 1.5 2"/>
+                <path d="m16.5 3.5-1.5 2"/>
+              </svg>
             </div>
             <p class="text-xs text-[var(--color-text-muted)] leading-relaxed">
               Infusionada con especias marcianas y magma sintético orgánico. Textura crujiente con toque ardiente de alta energía.
@@ -351,7 +450,11 @@
                   class="card-option crust-card p-5 rounded-2xl border text-left transition-all focus-ring">
             <div class="flex items-center justify-between mb-2">
               <strong class="text-base font-bold text-[var(--color-text)]">Polvo Estelar (Bio-crujiente)</strong>
-              <span class="text-xl" aria-hidden="true">✨</span>
+              <svg class="w-5 h-5 text-purple-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m12 3-1.9 4.3L6 8.5l3.5 3.2-.8 4.7 4.3-2.3 4.3 2.3-.8-4.7 3.5-3.2-4.1-1.2L12 3z"/>
+                <path d="M19 3v4m2-2h-4"/>
+                <path d="M5 17v4m2-2H3"/>
+              </svg>
             </div>
             <p class="text-xs text-[var(--color-text-muted)] leading-relaxed">
               Elaborada con sales micro-ionizadas de meteoritos. Altamente nutritiva, efervescente y apta para gravedad cero.
@@ -377,7 +480,10 @@
         <!-- Subgrupo 1: Ingredientes Terrestres Orgánicos -->
         <div class="mb-8">
           <h4 class="text-sm font-extrabold text-emerald-400 uppercase tracking-wider mb-4 flex items-center gap-2">
-            <span aria-hidden="true">🌱</span>
+            <svg class="w-4 h-4 text-emerald-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
+              <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+            </svg>
             <span>Ingredientes Terrestres (Seguros para Humanos y Aliens Zogtonianos)</span>
           </h4>
 
@@ -394,7 +500,12 @@
                     class="card-option ingredient-card p-4 rounded-2xl border text-left flex flex-col justify-between transition-all focus-ring">
               <div class="flex items-start justify-between gap-2 mb-2">
                 <div class="flex items-center gap-2.5">
-                  <span class="text-2xl" aria-hidden="true">🧀</span>
+                  <svg class="w-6 h-6 text-amber-300 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M3 13.5C3 8 7 4 12 4c5 0 9 4 9 9.5a5.5 5.5 0 0 1-5.5 5.5H8.5A5.5 5.5 0 0 1 3 13.5z"/>
+                    <circle cx="8" cy="11" r="1.5"/>
+                    <circle cx="15" cy="13" r="2"/>
+                    <circle cx="11" cy="15" r="1"/>
+                  </svg>
                   <div>
                     <strong class="block text-sm font-bold text-[var(--color-text)]">Muzzarella Lunar</strong>
                     <span class="text-xs text-[var(--color-text-muted)]">Lácteo cultivado en biosfera</span>
@@ -406,7 +517,10 @@
               </div>
               <div class="flex items-center justify-between pt-2 border-t border-[var(--color-border)] text-[11px]">
                 <span class="text-emerald-400 font-semibold flex items-center gap-1">
-                  <span aria-hidden="true">✓</span> Apto universal
+                  <svg class="w-3.5 h-3.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <polyline points="20 6 9 17 4 12"/>
+                  </svg>
+                  <span>Apto universal</span>
                 </span>
                 <span class="status-indicator text-[var(--color-text-muted)] font-medium">Añadir</span>
               </div>
@@ -423,7 +537,14 @@
                     class="card-option ingredient-card p-4 rounded-2xl border text-left flex flex-col justify-between transition-all focus-ring">
               <div class="flex items-start justify-between gap-2 mb-2">
                 <div class="flex items-center gap-2.5">
-                  <span class="text-2xl" aria-hidden="true">🍕</span>
+                  <svg class="w-6 h-6 text-red-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="9" cy="9" r="6"/>
+                    <circle cx="16" cy="15" r="5"/>
+                    <circle cx="8" cy="8" r="1" fill="currentColor"/>
+                    <circle cx="10" cy="11" r="0.8" fill="currentColor"/>
+                    <circle cx="15" cy="14" r="0.8" fill="currentColor"/>
+                    <circle cx="17" cy="16" r="0.8" fill="currentColor"/>
+                  </svg>
                   <div>
                     <strong class="block text-sm font-bold text-[var(--color-text)]">Pepperoni Galáctico</strong>
                     <span class="text-xs text-[var(--color-text-muted)]">Curado al vacío con especias</span>
@@ -435,7 +556,10 @@
               </div>
               <div class="flex items-center justify-between pt-2 border-t border-[var(--color-border)] text-[11px]">
                 <span class="text-emerald-400 font-semibold flex items-center gap-1">
-                  <span aria-hidden="true">✓</span> Apto universal
+                  <svg class="w-3.5 h-3.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <polyline points="20 6 9 17 4 12"/>
+                  </svg>
+                  <span>Apto universal</span>
                 </span>
                 <span class="status-indicator text-[var(--color-text-muted)] font-medium">Añadir</span>
               </div>
@@ -452,7 +576,10 @@
                     class="card-option ingredient-card p-4 rounded-2xl border text-left flex flex-col justify-between transition-all focus-ring">
               <div class="flex items-start justify-between gap-2 mb-2">
                 <div class="flex items-center gap-2.5">
-                  <span class="text-2xl" aria-hidden="true">🥓</span>
+                  <svg class="w-6 h-6 text-rose-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M3 8c3-2 6 2 9 0s6-2 9 0v4c-3-2-6 2-9 0s-6-2-9 0V8z"/>
+                    <path d="M3 15c3-2 6 2 9 0s6-2 9 0v2c-3-2-6 2-9 0s-6-2-9 0v-2z"/>
+                  </svg>
                   <div>
                     <strong class="block text-sm font-bold text-[var(--color-text)]">Bacon Cósmico</strong>
                     <span class="text-xs text-[var(--color-text-muted)]">Ahumado en hidroponia orbital</span>
@@ -464,7 +591,10 @@
               </div>
               <div class="flex items-center justify-between pt-2 border-t border-[var(--color-border)] text-[11px]">
                 <span class="text-emerald-400 font-semibold flex items-center gap-1">
-                  <span aria-hidden="true">✓</span> Apto universal
+                  <svg class="w-3.5 h-3.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <polyline points="20 6 9 17 4 12"/>
+                  </svg>
+                  <span>Apto universal</span>
                 </span>
                 <span class="status-indicator text-[var(--color-text-muted)] font-medium">Añadir</span>
               </div>
@@ -481,7 +611,12 @@
                     class="card-option ingredient-card p-4 rounded-2xl border text-left flex flex-col justify-between transition-all focus-ring">
               <div class="flex items-start justify-between gap-2 mb-2">
                 <div class="flex items-center gap-2.5">
-                  <span class="text-2xl" aria-hidden="true">🧀</span>
+                  <svg class="w-6 h-6 text-amber-200 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="m3 19 18-3V9L3 12v7z"/>
+                    <path d="m3 12 9-8 9 5"/>
+                    <circle cx="8" cy="15" r="1"/>
+                    <circle cx="14" cy="13" r="1.25"/>
+                  </svg>
                   <div>
                     <strong class="block text-sm font-bold text-[var(--color-text)]">Provolone de Asteroide</strong>
                     <span class="text-xs text-[var(--color-text-muted)]">Maduración en baja gravedad</span>
@@ -493,7 +628,10 @@
               </div>
               <div class="flex items-center justify-between pt-2 border-t border-[var(--color-border)] text-[11px]">
                 <span class="text-emerald-400 font-semibold flex items-center gap-1">
-                  <span aria-hidden="true">✓</span> Apto universal
+                  <svg class="w-3.5 h-3.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <polyline points="20 6 9 17 4 12"/>
+                  </svg>
+                  <span>Apto universal</span>
                 </span>
                 <span class="status-indicator text-[var(--color-text-muted)] font-medium">Añadir</span>
               </div>
@@ -510,7 +648,12 @@
                     class="card-option ingredient-card p-4 rounded-2xl border text-left flex flex-col justify-between transition-all focus-ring">
               <div class="flex items-start justify-between gap-2 mb-2">
                 <div class="flex items-center gap-2.5">
-                  <span class="text-2xl" aria-hidden="true">🫑</span>
+                  <svg class="w-6 h-6 text-emerald-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M12 2v4"/>
+                    <path d="M9 4c2 .5 4 .5 6 0"/>
+                    <path d="M6 9c0 7 2 12 6 12s6-5 6-12a4 4 0 0 0-4-3c-1.5 1-2.5 1-4 0a4 4 0 0 0-4 3z"/>
+                    <path d="M10 9c0 6 1 10 2 10s2-4 2-10"/>
+                  </svg>
                   <div>
                     <strong class="block text-sm font-bold text-[var(--color-text)]">Morrón de Marte</strong>
                     <span class="text-xs text-[var(--color-text-muted)]">Vegetal crujiente de cúpula</span>
@@ -522,7 +665,10 @@
               </div>
               <div class="flex items-center justify-between pt-2 border-t border-[var(--color-border)] text-[11px]">
                 <span class="text-emerald-400 font-semibold flex items-center gap-1">
-                  <span aria-hidden="true">✓</span> Apto universal
+                  <svg class="w-3.5 h-3.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <polyline points="20 6 9 17 4 12"/>
+                  </svg>
+                  <span>Apto universal</span>
                 </span>
                 <span class="status-indicator text-[var(--color-text-muted)] font-medium">Añadir</span>
               </div>
@@ -539,7 +685,12 @@
                     class="card-option ingredient-card p-4 rounded-2xl border text-left flex flex-col justify-between transition-all focus-ring">
               <div class="flex items-start justify-between gap-2 mb-2">
                 <div class="flex items-center gap-2.5">
-                  <span class="text-2xl" aria-hidden="true">🫒</span>
+                  <svg class="w-6 h-6 text-lime-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <ellipse cx="10" cy="13" rx="6" ry="7"/>
+                    <ellipse cx="10" cy="13" rx="2" ry="2.5"/>
+                    <ellipse cx="17" cy="9" rx="4" ry="5"/>
+                    <circle cx="17" cy="9" r="1.2"/>
+                  </svg>
                   <div>
                     <strong class="block text-sm font-bold text-[var(--color-text)]">Aceitunas de Ganímedes</strong>
                     <span class="text-xs text-[var(--color-text-muted)]">Encurtidas en salmuera joviana</span>
@@ -551,7 +702,10 @@
               </div>
               <div class="flex items-center justify-between pt-2 border-t border-[var(--color-border)] text-[11px]">
                 <span class="text-emerald-400 font-semibold flex items-center gap-1">
-                  <span aria-hidden="true">✓</span> Apto universal
+                  <svg class="w-3.5 h-3.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <polyline points="20 6 9 17 4 12"/>
+                  </svg>
+                  <span>Apto universal</span>
                 </span>
                 <span class="status-indicator text-[var(--color-text-muted)] font-medium">Añadir</span>
               </div>
@@ -563,7 +717,9 @@
         <!-- Subgrupo 2: Ingredientes Cósmicos y Zogtonianos (Con Toxicidad Humana) -->
         <div>
           <h4 class="text-sm font-extrabold text-amber-400 uppercase tracking-wider mb-4 flex items-center gap-2">
-            <span aria-hidden="true">⚡</span>
+            <svg class="w-4 h-4 text-amber-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/>
+            </svg>
             <span>Ingredientes Cósmicos & Toppings Zogtonianos (¡Alerta Toxicológica!)</span>
           </h4>
 
@@ -580,7 +736,12 @@
                     class="card-option ingredient-card p-4 rounded-2xl border text-left flex flex-col justify-between transition-all focus-ring">
               <div class="flex items-start justify-between gap-2 mb-2">
                 <div class="flex items-center gap-2.5">
-                  <span class="text-2xl" aria-hidden="true">🪨</span>
+                  <svg class="w-6 h-6 text-slate-300 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="m7 3 10 1 4 7-3 9-11 1-5-7 5-11z"/>
+                    <path d="m7 3 3 7 8-6"/>
+                    <path d="M10 10v11"/>
+                    <path d="m10 10 8 4 3-3"/>
+                  </svg>
                   <div>
                     <strong class="block text-sm font-bold text-[var(--color-text)]">Roca Espacial</strong>
                     <span class="text-xs text-[var(--color-text-muted)]">Mineral ionizado Zogton</span>
@@ -592,7 +753,12 @@
               </div>
               <div class="flex items-center justify-between pt-2 border-t border-[var(--color-border)] text-[11px]">
                 <span class="text-red-400 font-semibold flex items-center gap-1">
-                  <span aria-hidden="true">⚠️</span> Tóxico humanos
+                  <svg class="w-3.5 h-3.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/>
+                    <line x1="12" y1="9" x2="12" y2="13"/>
+                    <line x1="12" y1="17" x2="12.01" y2="17"/>
+                  </svg>
+                  <span>Tóxico humanos</span>
                 </span>
                 <span class="status-indicator text-[var(--color-text-muted)] font-medium">Añadir</span>
               </div>
@@ -609,7 +775,12 @@
                     class="card-option ingredient-card p-4 rounded-2xl border text-left flex flex-col justify-between transition-all focus-ring">
               <div class="flex items-start justify-between gap-2 mb-2">
                 <div class="flex items-center gap-2.5">
-                  <span class="text-2xl" aria-hidden="true">🧪</span>
+                  <svg class="w-6 h-6 text-cyan-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M10 2v5.5L4.5 18a2 2 0 0 0 1.7 3h11.6a2 2 0 0 0 1.7-3L14 7.5V2"/>
+                    <path d="M8.5 2h7"/>
+                    <path d="M7 15c2-1 4-1 6 0s4 1 6 0"/>
+                    <circle cx="12" cy="11" r="1"/>
+                  </svg>
                   <div>
                     <strong class="block text-sm font-bold text-[var(--color-text)]">Bebida Metano</strong>
                     <span class="text-xs text-[var(--color-text-muted)]">Hidrocarburo criogénico</span>
@@ -621,7 +792,12 @@
               </div>
               <div class="flex items-center justify-between pt-2 border-t border-[var(--color-border)] text-[11px]">
                 <span class="text-red-400 font-semibold flex items-center gap-1">
-                  <span aria-hidden="true">⚠️</span> Tóxico humanos
+                  <svg class="w-3.5 h-3.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/>
+                    <line x1="12" y1="9" x2="12" y2="13"/>
+                    <line x1="12" y1="17" x2="12.01" y2="17"/>
+                  </svg>
+                  <span>Tóxico humanos</span>
                 </span>
                 <span class="status-indicator text-[var(--color-text-muted)] font-medium">Añadir</span>
               </div>
@@ -638,7 +814,11 @@
                     class="card-option ingredient-card p-4 rounded-2xl border text-left flex flex-col justify-between transition-all focus-ring">
               <div class="flex items-start justify-between gap-2 mb-2">
                 <div class="flex items-center gap-2.5">
-                  <span class="text-2xl" aria-hidden="true">☀️</span>
+                  <svg class="w-6 h-6 text-amber-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="5"/>
+                    <path d="M12 1v3M12 20v3M1 12h3M20 12h3"/>
+                    <path d="m4.2 4.2 2.1 2.1M17.7 17.7l2.1 2.1M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/>
+                  </svg>
                   <div>
                     <strong class="block text-sm font-bold text-[var(--color-text)]">Salsa Solar</strong>
                     <span class="text-xs text-[var(--color-text-muted)]">Fotones picantes concentrados</span>
@@ -650,7 +830,10 @@
               </div>
               <div class="flex items-center justify-between pt-2 border-t border-[var(--color-border)] text-[11px]">
                 <span class="text-emerald-400 font-semibold flex items-center gap-1">
-                  <span aria-hidden="true">✓</span> Apto universal
+                  <svg class="w-3.5 h-3.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <polyline points="20 6 9 17 4 12"/>
+                  </svg>
+                  <span>Apto universal</span>
                 </span>
                 <span class="status-indicator text-[var(--color-text-muted)] font-medium">Añadir</span>
               </div>
@@ -667,7 +850,12 @@
                     class="card-option ingredient-card p-4 rounded-2xl border text-left flex flex-col justify-between transition-all focus-ring">
               <div class="flex items-start justify-between gap-2 mb-2">
                 <div class="flex items-center gap-2.5">
-                  <span class="text-2xl" aria-hidden="true">💎</span>
+                  <svg class="w-6 h-6 text-fuchsia-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M6 3h12l4 6-10 12L2 9l4-6z"/>
+                    <path d="M2 9h20"/>
+                    <path d="m10 3 2 6-2 12"/>
+                    <path d="m14 3-2 6 2 12"/>
+                  </svg>
                   <div>
                     <strong class="block text-sm font-bold text-[var(--color-text)]">Cristales de Plasma</strong>
                     <span class="text-xs text-[var(--color-text-muted)]">Bio-lumínico ionizante</span>
@@ -679,7 +867,12 @@
               </div>
               <div class="flex items-center justify-between pt-2 border-t border-[var(--color-border)] text-[11px]">
                 <span class="text-red-400 font-semibold flex items-center gap-1">
-                  <span aria-hidden="true">⚠️</span> Tóxico humanos
+                  <svg class="w-3.5 h-3.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/>
+                    <line x1="12" y1="9" x2="12" y2="13"/>
+                    <line x1="12" y1="17" x2="12.01" y2="17"/>
+                  </svg>
+                  <span>Tóxico humanos</span>
                 </span>
                 <span class="status-indicator text-[var(--color-text-muted)] font-medium">Añadir</span>
               </div>
@@ -697,7 +890,13 @@
             <span>PowerUps Celulares Bioenergéticos</span>
           </h3>
           <span class="badge-zogton-exclusive inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
-            <span>👽</span> Exclusivo Aliens Zogtonianos
+            <svg class="w-3.5 h-3.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 2C6.5 2 3 6.5 3 11.5c0 4.8 4.2 9.2 8.3 10.3a1.8 1.8 0 0 0 1.4 0c4.1-1.1 8.3-5.5 8.3-10.3C21 6.5 17.5 2 12 2z"/>
+              <path d="M7 10c.8-1.5 2.5-2 3.5-.8s.6 2.8-.2 3.6-2.5.4-3.2-.8c-.3-.5-.3-1.4-.1-2z"/>
+              <path d="M17 10c-.8-1.5-2.5-2-3.5-.8s-.6 2.8.2 3.6 2.5.4 3.2-.8c.3-.5.3-1.4.1-2z"/>
+              <circle cx="12" cy="17" r="1"/>
+            </svg>
+            <span>Exclusivo Aliens Zogtonianos</span>
           </span>
         </div>
 
@@ -716,7 +915,9 @@
                   data-price="3" 
                   class="card-option powerup-card p-4 rounded-2xl border text-left flex flex-col justify-between transition-all focus-ring disabled:opacity-40 disabled:cursor-not-allowed">
             <div class="flex items-center justify-between mb-2">
-              <span class="text-2xl" aria-hidden="true">⚡</span>
+              <svg class="w-6 h-6 text-amber-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+              </svg>
               <span class="font-black text-sm text-[var(--color-primary)]">+3.00 LC</span>
             </div>
             <div>
@@ -734,7 +935,11 @@
                   data-price="5" 
                   class="card-option powerup-card p-4 rounded-2xl border text-left flex flex-col justify-between transition-all focus-ring disabled:opacity-40 disabled:cursor-not-allowed">
             <div class="flex items-center justify-between mb-2">
-              <span class="text-2xl" aria-hidden="true">🔋</span>
+              <svg class="w-6 h-6 text-emerald-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="6" width="18" height="12" rx="3"/>
+                <path d="M22 10v4"/>
+                <path d="M7 12h2l1-2 2 4 1-2h2"/>
+              </svg>
               <span class="font-black text-sm text-[var(--color-primary)]">+5.00 LC</span>
             </div>
             <div>
@@ -752,7 +957,13 @@
                   data-price="8" 
                   class="card-option powerup-card p-4 rounded-2xl border text-left flex flex-col justify-between transition-all focus-ring disabled:opacity-40 disabled:cursor-not-allowed">
             <div class="flex items-center justify-between mb-2">
-              <span class="text-2xl" aria-hidden="true">🌟</span>
+              <svg class="w-6 h-6 text-purple-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M2 15c6.667-6 13.333 0 20-6"/>
+                <path d="M2 9c6.667 6 13.333 0 20 6"/>
+                <line x1="7" y1="10.5" x2="7" y2="13.5"/>
+                <line x1="12" y1="9" x2="12" y2="15"/>
+                <line x1="17" y1="10.5" x2="17" y2="13.5"/>
+              </svg>
               <span class="font-black text-sm text-[var(--color-primary)]">+8.00 LC</span>
             </div>
             <div>
@@ -784,7 +995,12 @@
         <div role="region" aria-label="Desglose del Pedido" class="lg:col-span-5 p-6 rounded-3xl bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xl static lg:sticky lg:top-28">
           <div class="flex items-center justify-between pb-4 border-b border-[var(--color-border)] mb-4">
             <h3 class="text-base font-bold text-[var(--color-text)] flex items-center gap-2">
-              <span aria-hidden="true">📋</span>
+              <svg class="w-5 h-5 text-[var(--color-primary)] flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="8" y="2" width="8" height="4" rx="1" ry="1"/>
+                <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
+                <path d="M9 12h6"/>
+                <path d="M9 16h4"/>
+              </svg>
               <span>Desglose de Costos</span>
             </h3>
             <span class="text-[10px] font-mono uppercase tracking-wider text-emerald-400 font-bold px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20">
@@ -808,7 +1024,12 @@
             <!-- Fila Descuento Alien Zogtoniano (-50%) -->
             <div id="summary-discount-row" class="hidden flex justify-between items-center py-2 px-3 rounded-xl bg-emerald-950/40 border border-emerald-500/30 text-emerald-400 text-xs font-bold">
               <span class="flex items-center gap-1.5">
-                <span aria-hidden="true">👽</span>
+                <svg class="w-4 h-4 text-emerald-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 2C6.5 2 3 6.5 3 11.5c0 4.8 4.2 9.2 8.3 10.3a1.8 1.8 0 0 0 1.4 0c4.1-1.1 8.3-5.5 8.3-10.3C21 6.5 17.5 2 12 2z"/>
+                  <path d="M7 10c.8-1.5 2.5-2 3.5-.8s.6 2.8-.2 3.6-2.5.4-3.2-.8c-.3-.5-.3-1.4-.1-2z"/>
+                  <path d="M17 10c-.8-1.5-2.5-2-3.5-.8s-.6 2.8.2 3.6 2.5.4 3.2-.8c.3-.5.3-1.4.1-2z"/>
+                  <circle cx="12" cy="17" r="1"/>
+                </svg>
                 <span>Subsidio Alien (50% OFF base):</span>
               </span>
               <span id="summary-discount-amount" class="text-sm font-black">-6.00 LC</span>
@@ -848,7 +1069,10 @@
           <button type="button" 
                   id="btn-reset-order" 
                   class="btn-secondary w-full mt-6 py-2.5 px-4 rounded-xl text-xs font-bold flex items-center justify-center gap-2 border border-[var(--color-border)] hover:bg-[var(--color-surface-hover)] transition-all focus-ring">
-            <span aria-hidden="true">🔄</span>
+            <svg class="w-4 h-4 text-current flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+              <path d="M3 3v5h5"/>
+            </svg>
             <span>Reiniciar Configuración</span>
           </button>
         </div>
@@ -892,14 +1116,14 @@
                 <select id="lunar-sector" 
                         name="lunarSector" 
                         required 
-                        class="select-field w-full px-4 py-3 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg)] text-[var(--color-text)] text-sm font-medium focus-ring transition-all"
+                        class="select-field w-full pl-4 pr-11 py-3 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg)] text-[var(--color-text)] text-sm font-medium focus-ring transition-all"
                         aria-describedby="lunar-sector-error">
-                  <option value="">Selecciona un sector espacial de entrega...</option>
-                  <option value="domo-alfa">Domo Alfa (Base Minera de Silicio)</option>
-                  <option value="crater-tycho">Cráter Tycho (Complejo Científico y Criogenia)</option>
-                  <option value="mar-tranquilidad">Mar de la Tranquilidad (Muelle Comercial Estelar)</option>
-                  <option value="estacion-mir3">Estación Orbital Mir-3 (Órbita Baja)</option>
-                  <option value="colonia-zogton">Colonia Zogtoniana Subterránea (Nivel Bio-4)</option>
+                  <option value="">Selecciona un sector de entrega...</option>
+                  <option value="domo-alfa">Domo Alfa (Base Minera)</option>
+                  <option value="crater-tycho">Cráter Tycho (Complejo Científico)</option>
+                  <option value="mar-tranquilidad">Mar de la Tranquilidad (Muelle Estelar)</option>
+                  <option value="estacion-mir3">Estación Mir-3 (Órbita Baja)</option>
+                  <option value="colonia-zogton">Colonia Zogtoniana (Nivel Bio-4)</option>
                 </select>
                 <span id="lunar-sector-error" class="input-error-msg hidden text-xs text-red-400 font-semibold mt-1.5 block"></span>
               </div>
@@ -930,10 +1154,10 @@
                 </label>
                 <select id="payment-method" 
                         name="paymentMethod" 
-                        class="select-field w-full px-4 py-3 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg)] text-[var(--color-text)] text-sm font-medium focus-ring transition-all">
-                  <option value="credits">Créditos Lunares (LC) · Descuento de saldo inmediato</option>
-                  <option value="cripto-nova">Cripto Nova (Blockchain Estelar de Titán)</option>
-                  <option value="vales-flota">Vales de Ración de la Flota Espacial Terrestre</option>
+                        class="select-field w-full pl-4 pr-11 py-3 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg)] text-[var(--color-text)] text-sm font-medium focus-ring transition-all">
+                  <option value="credits">Créditos Lunares (LC) · Inmediato</option>
+                  <option value="cripto-nova">Cripto Nova (Blockchain Titán)</option>
+                  <option value="vales-flota">Vales de Ración de la Flota</option>
                 </select>
               </div>
 
@@ -941,7 +1165,12 @@
               <button type="submit" 
                       id="btn-submit-order" 
                       class="btn-primary force-text-dark w-full mt-4 py-4 px-6 rounded-2xl text-base sm:text-lg font-black tracking-wide shadow-2xl flex items-center justify-center gap-3 focus-ring transition-all">
-                <span aria-hidden="true" class="text-xl">🚀</span>
+                <svg class="w-5 h-5 text-neutral-900 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
+                  <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
+                  <path d="M9 12H4s.55-3.03 2-4.5c1.45-1.47 4.5-2 4.5-2"/>
+                  <path d="M12 15v5s3.03-.55 4.5-2c1.47-1.45 2-4.5 2-4.5"/>
+                </svg>
                 <span>Lanzar Pedido al Espacio</span>
               </button>
 
@@ -965,7 +1194,11 @@
       
       <div class="flex items-center justify-between pb-4 border-b border-[var(--color-border)] mb-4">
         <div class="flex items-center gap-3">
-          <span class="text-3xl" aria-hidden="true">⚠️</span>
+          <svg class="w-8 h-8 text-red-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/>
+            <line x1="12" y1="9" x2="12" y2="13"/>
+            <line x1="12" y1="17" x2="12.01" y2="17"/>
+          </svg>
           <h3 id="bio-alert-title" class="text-lg sm:text-xl font-black text-red-400">
             ¡ALERTA BIO-MÉDICA: INGREDIENTE PROHIBIDO!
           </h3>
@@ -1010,7 +1243,12 @@
       
       <div class="flex items-center justify-between pb-4 border-b border-[var(--color-border)] mb-4">
         <div class="flex items-center gap-3">
-          <span class="text-3xl" aria-hidden="true">🚀</span>
+          <svg class="w-8 h-8 text-emerald-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
+            <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
+            <path d="M9 12H4s.55-3.03 2-4.5c1.45-1.47 4.5-2 4.5-2"/>
+            <path d="M12 15v5s3.03-.55 4.5-2c1.47-1.45 2-4.5 2-4.5"/>
+          </svg>
           <h3 id="order-success-title" class="text-lg sm:text-xl font-black text-emerald-400">
             ¡Misión de Lanzamiento Exitosa!
           </h3>
@@ -1072,7 +1310,12 @@
   <footer class="border-t border-[var(--color-border)] bg-[var(--color-surface)] py-10 transition-colors" role="contentinfo">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[var(--color-text-muted)]">
       <div class="flex items-center gap-2">
-        <span aria-hidden="true">🚀</span>
+        <svg class="w-4 h-4 text-[var(--color-primary)] flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
+          <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
+          <path d="M9 12H4s.55-3.03 2-4.5c1.45-1.47 4.5-2 4.5-2"/>
+          <path d="M12 15v5s3.03-.55 4.5-2c1.47-1.45 2-4.5 2-4.5"/>
+        </svg>
         <span class="font-bold text-[var(--color-text)]">Rocket Pizza Lunar SPA</span>
         <span>· Seminario de Interfaz de Usuario y Desarrollo de Software (iTec 2026)</span>
       </div>
