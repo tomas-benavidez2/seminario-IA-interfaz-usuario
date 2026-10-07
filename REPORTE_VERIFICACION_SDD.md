@@ -112,16 +112,31 @@
 │   └── tasks/
 │       └── seminario-ux-rocket-pizza.md # Plan de integración del seminario (T1 a T8)
 └── specs/
-    └── 001-rocket-pizza/
-        ├── spec.md              # Especificación funcional con sintaxis EARS
-        ├── plan.md              # Plan técnico de implementación
-        └── tasks.md             # Tareas atómicas de desarrollo (T1 a T5 completadas)
+    ├── 001-rocket-pizza/
+    │   ├── spec.md              # Especificación funcional con sintaxis EARS
+    │   ├── plan.md              # Plan técnico de implementación
+    │   └── tasks.md             # Tareas atómicas de desarrollo (T1 a T5 completadas)
+    └── 002-mobile-figma-refinement/
+        ├── spec.md              # Especificación de refinamiento mobile y Figma
+        ├── plan.md              # Plan técnico de cabecera adaptativa y tokens
+        └── tasks.md             # Tareas atómicas mobile (T1 a T3 completadas)
 ```
+
+---
+
+## 4.5 Ciclo de Refinamiento Mobile y Fidelidad Figma (002-mobile-figma-refinement)
+- **Motivo de Iteración:** Corrección de desbordamiento horizontal en cabecera en pantallas de 360px a 390px, eliminación de bloqueo por `sticky` en el desglose de precios en viewports móviles y sincronización 1:1 con los tokens de Figma (*Reto 5*).
+- **Lecciones Registradas en Master Context:** Adición de Errores 5, 6 y 7 en `docs/contexto/errores-conocidos.md`.
+- **Tareas Ejecutadas y Auditadas:**
+  - **T1:** Cabecera responsiva con orden reversible (Logo en fila superior, acciones a la derecha, sub-header segmentado de especie centrado sin duplicar IDs).
+  - **T2:** Desglose de costos condicional (`static lg:sticky lg:top-28`), permitiendo scroll libre y sin obstrucciones en mobile.
+  - **T3:** Calibración cromática: Badge de carrito en Albahaca Neón (`#55E16B` con `#00390F`, ratio 7.85:1, nivel AAA) y cabecera en `#10141A` (Figma 1:391).
+- **Veredicto del Reviewer:** **APROBADO**.
 
 ---
 
 ## 5. Dictamen Final del Coordinador
 
-El proyecto **Rocket Pizza Lunar** ha superado todas las compuertas de calidad, arquitectura y accesibilidad estipuladas para el Seminario de Interfaz de Usuario y Desarrollo de Software (iTec 2026). La implementación es sólida, modular, libre de dependencias superfluas y respeta al 100% las decisiones de diseño y accesibilidad acordadas.
+El proyecto **Rocket Pizza Lunar** ha superado todas las compuertas de calidad, arquitectura y accesibilidad estipuladas para el Seminario de Interfaz de Usuario y Desarrollo de Software (iTec 2026), incluyendo la iteración de refinamiento móvil y fidelidad rigurosa a Figma. La implementación es sólida, modular, libre de dependencias superfluas y 100% accesible.
 
 **Estado:** Aprobado para entrega y presentación oficial.

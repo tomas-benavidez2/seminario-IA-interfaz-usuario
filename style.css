@@ -501,3 +501,39 @@ dialog.modal-dialog::backdrop {
 #summary-ingredients-list::-webkit-scrollbar-thumb:hover {
   background: var(--color-text-muted);
 }
+
+/* --------------------------------------------------------------------------
+   6.1 Cabecera Fija Responsiva y Contenedor Adaptativo (Figma 1:391)
+   -------------------------------------------------------------------------- */
+.header-nav {
+  background-color: #10141A !important; /* Figma 1:391 */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-border);
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+[data-theme="light"] .header-nav {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  border-bottom-color: var(--color-border);
+}
+
+.header-mobile-wrap {
+  transition: padding 0.2s ease, height 0.2s ease;
+}
+
+/* --------------------------------------------------------------------------
+   6.2 Badge del Carrito Lunar (Figma 1:399)
+   -------------------------------------------------------------------------- */
+.badge-count {
+  background-color: #55E16B !important; /* Albahaca Neón Figma 1:399 */
+  color: #00390F !important;            /* Texto verde profundo contraste 7.8:1 */
+  font-weight: 900 !important;
+}
+
+[data-theme="light"] .badge-count {
+  background-color: #02AD3F !important;
+  color: #FFFFFF !important;
+}
+
+
