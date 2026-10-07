@@ -58,15 +58,15 @@
   <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
 
   <!-- Header fijo accesible (role="banner") -->
-  <header class="fixed top-0 left-0 right-0 z-40 bg-[var(--color-surface)]/95 backdrop-blur-md border-b border-[var(--color-border)] transition-colors duration-200" role="banner">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-2 sm:gap-4">
+  <header class="fixed top-0 left-0 right-0 z-40 bg-[var(--color-surface)]/95 backdrop-blur-md border-b border-[var(--color-border)] transition-colors duration-200 header-nav" role="banner">
+    <div class="header-mobile-wrap max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 md:py-0 md:h-20 flex flex-wrap md:flex-nowrap items-center justify-between gap-y-2 gap-x-2 sm:gap-4">
       
-      <!-- Logo y Marca de Rocket Pizza Lunar -->
-      <a href="#" class="flex items-center gap-3 group text-decoration-none focus-ring rounded-2xl p-1.5 transition-transform" aria-label="Rocket Pizza Lunar - Inicio">
-        <span class="text-3xl sm:text-4xl transform group-hover:scale-110 group-active:scale-95 transition-transform" aria-hidden="true">🚀</span>
+      <!-- Logo y Marca de Rocket Pizza Lunar (order-1 en mobile y desktop) -->
+      <a href="#" class="order-1 flex items-center gap-1.5 sm:gap-3 group text-decoration-none focus-ring rounded-2xl p-1 transition-transform" aria-label="Rocket Pizza Lunar - Inicio">
+        <span class="text-2xl sm:text-4xl transform group-hover:scale-110 group-active:scale-95 transition-transform" aria-hidden="true">🚀</span>
         <div class="flex flex-col">
-          <span class="text-lg sm:text-xl font-black tracking-tight text-[var(--color-text)] flex items-center gap-1.5">
-            Rocket Pizza <span class="text-[var(--color-primary)]">Lunar</span>
+          <span class="text-sm sm:text-lg md:text-xl font-black tracking-tight text-[var(--color-text)] flex items-center gap-1">
+            <span class="text-[var(--color-primary)]">Rocket Pizza</span> <span class="hidden sm:inline text-[var(--color-text)]">Lunar</span>
           </span>
           <span class="hidden sm:inline text-xs font-semibold text-[var(--color-text-muted)] tracking-wider uppercase">
             Estación Orbital Alfa-1
@@ -74,8 +74,41 @@
         </div>
       </a>
 
-      <!-- Selector Accesible de Especie (WAI-ARIA radiogroup) -->
-      <div class="flex items-center">
+      <!-- Acciones de Cabecera: Conmutador de Tema y Badge del Carrito (order-2 en mobile, order-3 en desktop) -->
+      <div class="order-2 md:order-3 flex items-center gap-1.5 sm:gap-3">
+        <!-- Conmutador de Tema (#theme-toggle) -->
+        <button type="button" 
+                id="theme-toggle" 
+                class="btn-icon p-2 sm:p-2.5 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-text)] hover:bg-[var(--color-surface-hover)] transition-all focus-ring"
+                aria-label="Alternar entre tema Espacio Profundo y Estación Espacial" 
+                aria-pressed="false"
+                title="Cambiar tema visual">
+          <!-- Icono Luna (Tema Dark activo) -->
+          <svg id="theme-icon-dark" class="w-4 h-4 sm:w-5 sm:h-5 block" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+          </svg>
+          <!-- Icono Sol (Tema Light activo) -->
+          <svg id="theme-icon-light" class="w-4 h-4 sm:w-5 sm:h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 9h-1m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+        </button>
+
+        <!-- Badge de Resumen del Carrito Lunar -->
+        <a href="#checkout-section" 
+           id="cart-badge-btn" 
+           class="btn-cart flex items-center gap-1.5 sm:gap-2 px-2 py-1.5 sm:px-4 sm:py-2.5 rounded-xl bg-[var(--color-surface)] border border-[var(--color-border)] hover:border-[var(--color-primary)] text-[var(--color-text)] transition-all focus-ring"
+           aria-label="Ver resumen de orden espacial: 0 ingredientes, total 12 Créditos Lunares">
+          <span aria-hidden="true" class="text-base sm:text-lg">🛒</span>
+          <span class="hidden md:inline text-xs font-bold uppercase tracking-wider text-[var(--color-text-muted)]">Orden</span>
+          <span id="cart-badge-count" class="badge-count px-2 py-0.5 text-xs rounded-full">0</span>
+          <span id="cart-badge-total" class="font-black text-xs sm:text-sm text-[var(--color-primary)]">
+            12 LC
+          </span>
+        </a>
+      </div>
+
+      <!-- Selector Accesible de Especie (WAI-ARIA radiogroup, order-3 en mobile, order-2 en desktop) -->
+      <div class="order-3 md:order-2 w-full md:w-auto flex justify-center mt-2 pb-2 md:mt-0 md:pb-0">
         <div role="radiogroup" aria-labelledby="species-selector-label" class="species-selector-group flex items-center p-1 rounded-2xl bg-[var(--color-bg)] border border-[var(--color-border)] shadow-inner">
           <span id="species-selector-label" class="sr-only">Selecciona tu Especie de Tripulación</span>
           
@@ -108,46 +141,11 @@
         </div>
       </div>
 
-      <!-- Acciones de Cabecera: Conmutador de Tema y Badge del Carrito -->
-      <div class="flex items-center gap-2 sm:gap-3">
-        <!-- Conmutador de Tema (#theme-toggle) -->
-        <button type="button" 
-                id="theme-toggle" 
-                class="btn-icon p-2.5 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-text)] hover:bg-[var(--color-surface-hover)] transition-all focus-ring"
-                aria-label="Alternar entre tema Espacio Profundo y Estación Espacial" 
-                aria-pressed="false"
-                title="Cambiar tema visual">
-          <!-- Icono Luna (Tema Dark activo) -->
-          <svg id="theme-icon-dark" class="w-5 h-5 block" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-          </svg>
-          <!-- Icono Sol (Tema Light activo) -->
-          <svg id="theme-icon-light" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 9h-1m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-          </svg>
-        </button>
-
-        <!-- Badge de Resumen del Carrito Lunar -->
-        <a href="#checkout-section" 
-           id="cart-badge-btn" 
-           class="btn-cart flex items-center gap-2 px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl bg-[var(--color-surface)] border border-[var(--color-border)] hover:border-[var(--color-primary)] text-[var(--color-text)] transition-all focus-ring"
-           aria-label="Ver resumen de orden espacial: 0 ingredientes, total 12 Créditos Lunares">
-          <span aria-hidden="true" class="text-base sm:text-lg">🛒</span>
-          <span class="hidden md:inline text-xs font-bold uppercase tracking-wider text-[var(--color-text-muted)]">Orden</span>
-          <span id="cart-badge-count" class="badge-count px-2 py-0.5 text-xs font-black rounded-full bg-[var(--color-primary)] force-text-dark">
-            0
-          </span>
-          <span id="cart-badge-total" class="font-black text-xs sm:text-sm text-[var(--color-primary)]">
-            12 LC
-          </span>
-        </a>
-      </div>
-
     </div>
   </header>
 
   <!-- Contenido Principal -->
-  <main id="main-content" class="pt-28 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 focus:outline-none" tabindex="-1">
+  <main id="main-content" class="pt-36 md:pt-24 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 focus:outline-none" tabindex="-1">
 
     <!-- SECCIÓN 1: HERO CÓSMICO -->
     <section id="hero" aria-labelledby="hero-title" class="mb-14 py-10 px-6 sm:px-10 lg:px-12 rounded-3xl hero-card border border-[var(--color-border)] bg-[var(--color-surface)] shadow-2xl transition-all duration-300">
@@ -783,7 +781,7 @@
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         
         <!-- COLUMNA 1: DESGLOSE DE COSTOS EN CRÉDITOS LUNARES -->
-        <div role="region" aria-label="Desglose del Pedido" class="lg:col-span-5 p-6 rounded-3xl bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xl sticky top-28">
+        <div role="region" aria-label="Desglose del Pedido" class="lg:col-span-5 p-6 rounded-3xl bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xl static lg:sticky lg:top-28">
           <div class="flex items-center justify-between pb-4 border-b border-[var(--color-border)] mb-4">
             <h3 class="text-base font-bold text-[var(--color-text)] flex items-center gap-2">
               <span aria-hidden="true">📋</span>
