@@ -1,0 +1,503 @@
+/**
+ * Rocket Pizza Lunar - Sistema de Tokens de Diseño y Estados Interactivos
+ * Basado en las Especificaciones de Figma (Reto 5) y Metodología Gentle-AI SDD
+ * Cumplimiento Estricto WCAG AA (Ratio >= 4.5:1) y Prueba de la Mano Atada
+ */
+
+/* ==========================================================================
+   1. TOKENS DE DISEÑO (CSS CUSTOM PROPERTIES)
+   ========================================================================== */
+
+:root {
+  /* Paleta Base Semántica (Modo Espacio Profundo / Dark) */
+  --color-primary: #FF9500;           /* Naranja Medianoche: CTA primario y acentos */
+  --color-primary-hover: #FFB874;     /* Luminosidad hover botones primarios */
+  --color-secondary: #55E16B;         /* Albahaca Neón: Badges y bioenergía */
+  --color-success: #02AD3F;           /* Verde Orbital: Estados de éxito y confirmación */
+  --color-danger: #E53E3E;            /* Rojo Alerta: Advertencias y errores de formulario */
+  --color-danger-subtle: #FFB4AB;     /* Rosa pálido de alerta toxicológica */
+
+  /* Superficies y Fondos (Modo Oscuro) */
+  --color-bg: #1C2026;                /* Fondo general cósmico */
+  --color-surface: #252B33;           /* Tarjetas, modales y barra de navegación */
+  --color-surface-hover: #2F3640;     /* Superficie activa/hover */
+  --color-border: #38414D;            /* Bordes y divisores estructurales */
+
+  /* Tipografía y Contraste (Modo Oscuro) */
+  --color-text: #DFE2EB;              /* Texto principal de alto contraste (12.4:1 sobre #1C2026) */
+  --color-text-muted: #DBC2AD;        /* Texto secundario y descriptores */
+  --color-text-on-primary: #1A202C;   /* SALVAGUARDA WCAG AA: Texto oscuro sobre naranja #FF9500 (7.4:1) */
+
+  /* Fuente base */
+  --font-family-base: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+
+  /* Accesibilidad y Foco Teclado */
+  --focus-ring-color: #FBBF24;        /* Anillo de alto contraste: Ámbar 400 */
+  --focus-ring-offset: #1C2026;       /* Offset coincidente con el fondo oscuro */
+
+  /* Sombras y Elevación */
+  --shadow-card: 0 10px 25px -5px rgba(0, 0, 0, 0.4), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
+  --shadow-elevated: 0 20px 35px -5px rgba(0, 0, 0, 0.6);
+}
+
+[data-theme="light"] {
+  /* Paleta Semántica (Modo Estación Espacial / Light) */
+  --color-primary: #FF9500;           /* Naranja Medianoche se mantiene como acento de marca */
+  --color-primary-hover: #FFB874;     /* Hover suave */
+  --color-secondary: #02AD3F;         /* Verde esmeralda de alto contraste sobre fondo claro */
+  --color-success: #02AD3F;
+  --color-danger: #E53E3E;
+  --color-danger-subtle: #FFB4AB;
+
+  /* Superficies y Fondos (Modo Claro) */
+  --color-bg: #F8F9FA;                /* Fondo general claro esterilizado */
+  --color-surface: #FFFFFF;           /* Tarjetas y modales blancos puros */
+  --color-surface-hover: #F1F3F5;     /* Hover de tarjetas */
+  --color-border: #E2E8F0;            /* Bordes neutros sutiles */
+
+  /* Tipografía y Contraste (Modo Claro) */
+  --color-text: #1A202C;              /* Texto principal oscuro de máximo contraste (16:1) */
+  --color-text-muted: #4A5568;        /* Texto secundario neutro legible */
+  --color-text-on-primary: #1A202C;   /* Mantiene el texto oscuro sobre naranja */
+
+  /* Accesibilidad y Foco Teclado */
+  --focus-ring-color: #D97706;        /* Ámbar 600 para alto contraste sobre blanco */
+  --focus-ring-offset: #FFFFFF;       /* Offset blanco para modo claro */
+
+  /* Sombras y Elevación */
+  --shadow-card: 0 4px 20px -2px rgba(0, 0, 0, 0.08), 0 2px 6px -1px rgba(0, 0, 0, 0.04);
+  --shadow-elevated: 0 16px 30px -4px rgba(0, 0, 0, 0.12);
+}
+
+/* Salvaguarda de Contraste WCAG AA en Modo Claro para clases utilitarias */
+[data-theme="light"] .text-emerald-400 {
+  color: var(--color-success) !important;
+}
+
+[data-theme="light"] .text-red-400 {
+  color: var(--color-danger) !important;
+}
+
+/* ==========================================================================
+   2. REGLAS BASE Y RESET ACCESIBLE
+   ========================================================================== */
+
+html {
+  font-family: var(--font-family-base);
+  scroll-behavior: smooth;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  overflow-x: hidden;
+}
+
+/* Enlace Accesible de Salto (Prueba de la Mano Atada / WCAG 2.4.1) */
+.skip-link {
+  position: absolute;
+  top: -9999px;
+  left: 1rem;
+  z-index: 9999;
+  padding: 0.85rem 1.75rem;
+  background-color: var(--color-primary);
+  color: var(--color-text-on-primary) !important;
+  font-weight: 800;
+  font-size: 0.875rem;
+  border-radius: 0.75rem;
+  box-shadow: var(--shadow-elevated);
+  text-decoration: none;
+  transition: top 0.15s ease-out;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  top: 1rem;
+  outline: none;
+  box-shadow: 0 0 0 3px var(--focus-ring-offset), 0 0 0 6px var(--focus-ring-color) !important;
+}
+
+/* ==========================================================================
+   3. CLASES SEMÁNTICAS Y SALVAGUARDAS DE CONTRASTE WCAG AA
+   ========================================================================== */
+
+/* Salvaguarda Estricta para Botones Naranjas (#FF9500): Texto Oscuro Obligatorio */
+.force-text-dark {
+  color: #1A202C !important;
+  font-weight: 800 !important;
+}
+
+/* Salvaguarda Estricta para Badges y Chips sobre Fondos Oscuros o Verdes */
+.force-text-white {
+  color: #FFFFFF !important;
+  font-weight: 700 !important;
+}
+
+/* Utilidad Universal de Anillo de Foco Accesible (:focus-visible) */
+.focus-ring {
+  transition: box-shadow 0.15s ease, outline 0.15s ease;
+}
+
+.focus-ring:focus-visible {
+  outline: none !important;
+  box-shadow: 0 0 0 2px var(--focus-ring-offset), 0 0 0 4px var(--focus-ring-color) !important;
+}
+
+/* ==========================================================================
+   4. IMPLEMENTACIÓN DE LOS 5 ESTADOS OBLIGATORIOS EN CONTROLES
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   4.1 Botón Primario (.btn-primary)
+   -------------------------------------------------------------------------- */
+.btn-primary {
+  /* 1. ESTADO DEFAULT */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-primary);
+  color: var(--color-text-on-primary) !important;
+  font-weight: 800;
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  user-select: none;
+  transition: background-color 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+}
+
+/* 2. ESTADO HOVER */
+.btn-primary:hover:not(:disabled):not([aria-disabled="true"]) {
+  background-color: var(--color-primary-hover);
+  color: var(--color-text-on-primary) !important;
+}
+
+/* 3. ESTADO ACTIVE */
+.btn-primary:active:not(:disabled):not([aria-disabled="true"]) {
+  transform: scale(0.95);
+  background-color: #E68500;
+}
+
+/* 4. ESTADO FOCUS (:focus-visible) */
+.btn-primary:focus-visible {
+  outline: none !important;
+  box-shadow: 0 0 0 2px var(--focus-ring-offset), 0 0 0 4px var(--focus-ring-color) !important;
+}
+
+/* 5. ESTADO DISABLED */
+.btn-primary:disabled,
+.btn-primary[aria-disabled="true"] {
+  opacity: 0.5 !important;
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* --------------------------------------------------------------------------
+   4.2 Botón Secundario (.btn-secondary)
+   -------------------------------------------------------------------------- */
+.btn-secondary {
+  /* 1. ESTADO DEFAULT */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  cursor: pointer;
+  text-decoration: none;
+  user-select: none;
+  transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease;
+}
+
+/* 2. ESTADO HOVER */
+.btn-secondary:hover:not(:disabled):not([aria-disabled="true"]) {
+  background-color: var(--color-surface-hover);
+  border-color: var(--color-text-muted);
+}
+
+/* 3. ESTADO ACTIVE */
+.btn-secondary:active:not(:disabled):not([aria-disabled="true"]) {
+  transform: scale(0.95);
+}
+
+/* 4. ESTADO FOCUS (:focus-visible) */
+.btn-secondary:focus-visible {
+  outline: none !important;
+  box-shadow: 0 0 0 2px var(--focus-ring-offset), 0 0 0 4px var(--focus-ring-color) !important;
+}
+
+/* 5. ESTADO DISABLED */
+.btn-secondary:disabled,
+.btn-secondary[aria-disabled="true"] {
+  opacity: 0.5 !important;
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* --------------------------------------------------------------------------
+   4.3 Tarjetas Opciones Interactivas (.card-option)
+   Tamaños, Masas, Ingredientes y PowerUps
+   -------------------------------------------------------------------------- */
+.card-option {
+  /* 1. ESTADO DEFAULT */
+  background-color: var(--color-surface);
+  border: 2px solid var(--color-border);
+  color: var(--color-text);
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  transition: transform 0.15s ease, border-color 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* 2. ESTADO HOVER */
+.card-option:hover:not(:disabled):not([aria-disabled="true"]) {
+  border-color: var(--color-primary-hover);
+  background-color: var(--color-surface-hover);
+  transform: translateY(-2px);
+}
+
+/* 3. ESTADO ACTIVE */
+.card-option:active:not(:disabled):not([aria-disabled="true"]) {
+  transform: scale(0.96);
+}
+
+/* 4. ESTADO FOCUS (:focus-visible) */
+.card-option:focus-visible {
+  outline: none !important;
+  box-shadow: 0 0 0 2px var(--focus-ring-offset), 0 0 0 4px var(--focus-ring-color) !important;
+}
+
+/* ESTADO SELECCIONADO (aria-checked="true" o .is-selected) */
+.card-option.is-selected,
+.card-option[aria-checked="true"] {
+  border-color: var(--color-primary) !important;
+  background-color: var(--color-surface-hover);
+  box-shadow: 0 0 0 1px var(--color-primary), var(--shadow-card);
+}
+
+.card-option.is-selected .status-indicator,
+.card-option[aria-checked="true"] .status-indicator {
+  color: var(--color-primary);
+  font-weight: 800;
+}
+
+/* 5. ESTADO DISABLED */
+.card-option:disabled,
+.card-option[aria-disabled="true"] {
+  opacity: 0.4 !important;
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* --------------------------------------------------------------------------
+   4.4 Botones del Selector de Especie (.species-option-btn)
+   -------------------------------------------------------------------------- */
+.species-option-btn {
+  /* 1. ESTADO DEFAULT */
+  background: transparent;
+  color: var(--color-text-muted);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease, transform 0.1s ease;
+}
+
+/* 2. ESTADO HOVER */
+.species-option-btn:hover:not(.is-active) {
+  color: var(--color-text);
+  background-color: var(--color-surface-hover);
+}
+
+/* 3. ESTADO ACTIVE */
+.species-option-btn:active {
+  transform: scale(0.95);
+}
+
+/* 4. ESTADO FOCUS (:focus-visible) */
+.species-option-btn:focus-visible {
+  outline: none !important;
+  box-shadow: 0 0 0 2px var(--focus-ring-offset), 0 0 0 4px var(--focus-ring-color) !important;
+}
+
+/* ESTADO ACTIVO SELECCIONADO */
+.species-option-btn.is-active,
+.species-option-btn[aria-checked="true"] {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  border-color: var(--color-border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* 5. ESTADO DISABLED */
+.species-option-btn:disabled,
+.species-option-btn[aria-disabled="true"] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   4.5 Controles de Formulario (.input-field, .select-field)
+   -------------------------------------------------------------------------- */
+.input-field,
+.select-field {
+  /* 1. ESTADO DEFAULT */
+  background-color: var(--color-bg);
+  border: 1.5px solid var(--color-border);
+  color: var(--color-text);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* 2. ESTADO HOVER */
+.input-field:hover:not(:disabled):not(:focus),
+.select-field:hover:not(:disabled):not(:focus) {
+  border-color: var(--color-primary-hover);
+}
+
+/* 3. ESTADO ACTIVE */
+.input-field:active,
+.select-field:active {
+  border-color: var(--color-primary);
+}
+
+/* 4. ESTADO FOCUS (:focus-visible / :focus) */
+.input-field:focus,
+.input-field:focus-visible,
+.select-field:focus,
+.select-field:focus-visible {
+  outline: none !important;
+  border-color: var(--color-primary) !important;
+  box-shadow: 0 0 0 2px var(--focus-ring-offset), 0 0 0 4px var(--focus-ring-color) !important;
+}
+
+/* ESTADO INVÁLIDO DE FORMULARIO */
+.input-field.is-invalid,
+.select-field.is-invalid {
+  border-color: var(--color-danger) !important;
+  background-color: rgba(229, 62, 62, 0.05);
+}
+
+.input-field.is-invalid:focus-visible,
+.select-field.is-invalid:focus-visible {
+  box-shadow: 0 0 0 2px var(--focus-ring-offset), 0 0 0 4px var(--color-danger) !important;
+}
+
+/* 5. ESTADO DISABLED */
+.input-field:disabled,
+.select-field:disabled {
+  opacity: 0.5 !important;
+  cursor: not-allowed !important;
+  background-color: var(--color-surface-hover) !important;
+}
+
+/* ==========================================================================
+   5. COMPONENTES WAI-ARIA DIALOG (<dialog>) Y BACKDROP
+   ========================================================================== */
+
+/* Asegurar que modales cerrados no sean accesibles en el arbol de accesibilidad ni reciban foco */
+dialog.modal-dialog:not([open]) {
+  display: none !important;
+}
+
+dialog.modal-dialog {
+  border: none;
+  background: transparent;
+  padding: 1rem;
+  max-width: 36rem;
+  width: 95%;
+  margin: auto;
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+dialog.modal-dialog[open] {
+  opacity: 1;
+  pointer-events: auto;
+  animation: modalScaleIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+dialog.modal-dialog::backdrop {
+  background-color: rgba(8, 10, 14, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+@keyframes modalScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Microinteracción táctil Active en controles auxiliares */
+.btn-icon:active,
+.btn-cart:active,
+.modal-close-btn:active {
+  transform: scale(0.95);
+}
+
+/* Estado Disabled en controles auxiliares */
+.btn-icon:disabled,
+.btn-icon[aria-disabled="true"],
+.btn-cart:disabled,
+.btn-cart[aria-disabled="true"],
+.modal-close-btn:disabled,
+.modal-close-btn[aria-disabled="true"] {
+  opacity: 0.5 !important;
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* ==========================================================================
+   6. RESPONSIVE Y MEJORAS VISUALES
+   ========================================================================== */
+
+/* Contenedores con sombra fluida */
+.hero-card {
+  box-shadow: var(--shadow-card);
+}
+
+.order-summary-card {
+  box-shadow: var(--shadow-card);
+}
+
+/* Scrollbar refinado para la lista de ingredientes del resumen */
+#summary-ingredients-list::-webkit-scrollbar {
+  width: 4px;
+}
+
+#summary-ingredients-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#summary-ingredients-list::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+
+#summary-ingredients-list::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}

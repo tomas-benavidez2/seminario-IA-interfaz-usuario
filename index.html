@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rocket Pizza Lunar | Pizzería Intergaláctica Automatizada</title>
+  <meta name="description" content="Pizzería espacial de alta tecnología en órbita lunar. Configuración personalizada de pizzas para tripulantes humanos y aliens zogtonianos con certificación biocompatible.">
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: ['class', '[data-theme="dark"]'],
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'system-ui', '-apple-system', 'sans-serif'],
+          },
+          colors: {
+            lunar: {
+              primary: '#FF9500',
+              'primary-hover': '#FFB874',
+              secondary: '#55E16B',
+              success: '#02AD3F',
+              danger: '#E53E3E',
+              'danger-subtle': '#FFB4AB',
+              darkBg: '#1C2026',
+              darkSurface: '#252B33',
+              darkBorder: '#38414D',
+              darkText: '#DFE2EB',
+              darkMuted: '#DBC2AD',
+              lightBg: '#F8F9FA',
+              lightSurface: '#FFFFFF',
+              lightBorder: '#E2E8F0',
+              lightText: '#1A202C',
+              lightMuted: '#4A5568'
+            }
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Estilos propios y tokens CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Lógica modular de cliente (defer) -->
+  <script src="app.js" defer></script>
+</head>
+<body class="min-h-screen bg-[var(--color-bg)] text-[var(--color-text)] font-sans antialiased selection:bg-amber-500 selection:text-neutral-900 transition-colors duration-200">
+
+  <!-- Enlace accesible de salto al contenido principal (Prueba de la Mano Atada / WCAG 2.4.1) -->
+  <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+  <!-- Header fijo accesible (role="banner") -->
+  <header class="fixed top-0 left-0 right-0 z-40 bg-[var(--color-surface)]/95 backdrop-blur-md border-b border-[var(--color-border)] transition-colors duration-200" role="banner">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-2 sm:gap-4">
+      
+      <!-- Logo y Marca de Rocket Pizza Lunar -->
+      <a href="#" class="flex items-center gap-3 group text-decoration-none focus-ring rounded-2xl p-1.5 transition-transform" aria-label="Rocket Pizza Lunar - Inicio">
+        <span class="text-3xl sm:text-4xl transform group-hover:scale-110 group-active:scale-95 transition-transform" aria-hidden="true">🚀</span>
+        <div class="flex flex-col">
+          <span class="text-lg sm:text-xl font-black tracking-tight text-[var(--color-text)] flex items-center gap-1.5">
+            Rocket Pizza <span class="text-[var(--color-primary)]">Lunar</span>
+          </span>
+          <span class="hidden sm:inline text-xs font-semibold text-[var(--color-text-muted)] tracking-wider uppercase">
+            Estación Orbital Alfa-1
+          </span>
+        </div>
+      </a>
+
+      <!-- Selector Accesible de Especie (WAI-ARIA radiogroup) -->
+      <div class="flex items-center">
+        <div role="radiogroup" aria-labelledby="species-selector-label" class="species-selector-group flex items-center p-1 rounded-2xl bg-[var(--color-bg)] border border-[var(--color-border)] shadow-inner">
+          <span id="species-selector-label" class="sr-only">Selecciona tu Especie de Tripulación</span>
+          
+          <!-- Botón Humano -->
+          <button type="button" 
+                  id="species-human" 
+                  role="radio" 
+                  aria-checked="true" 
+                  tabindex="0"
+                  data-species="human" 
+                  class="species-option-btn is-active flex items-center gap-1.5 px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl text-xs sm:text-sm font-bold transition-all focus-ring">
+            <span aria-hidden="true" class="text-base sm:text-lg">👫</span>
+            <span>Humano</span>
+          </button>
+          
+          <!-- Botón Alien Zogtoniano -->
+          <button type="button" 
+                  id="species-alien" 
+                  role="radio" 
+                  aria-checked="false" 
+                  tabindex="-1"
+                  data-species="alien" 
+                  class="species-option-btn flex items-center gap-1.5 px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl text-xs sm:text-sm font-bold transition-all focus-ring">
+            <span aria-hidden="true" class="text-base sm:text-lg">👽</span>
+            <span>Alien Zogtoniano</span>
+            <span class="badge-alien-discount text-[10px] font-black px-1.5 py-0.5 rounded-md bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 ml-1">
+              -50%
+            </span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Acciones de Cabecera: Conmutador de Tema y Badge del Carrito -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <!-- Conmutador de Tema (#theme-toggle) -->
+        <button type="button" 
+                id="theme-toggle" 
+                class="btn-icon p-2.5 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-text)] hover:bg-[var(--color-surface-hover)] transition-all focus-ring"
+                aria-label="Alternar entre tema Espacio Profundo y Estación Espacial" 
+                aria-pressed="false"
+                title="Cambiar tema visual">
+          <!-- Icono Luna (Tema Dark activo) -->
+          <svg id="theme-icon-dark" class="w-5 h-5 block" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+          </svg>
+          <!-- Icono Sol (Tema Light activo) -->
+          <svg id="theme-icon-light" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 9h-1m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+        </button>
+
+        <!-- Badge de Resumen del Carrito Lunar -->
+        <a href="#checkout-section" 
+           id="cart-badge-btn" 
+           class="btn-cart flex items-center gap-2 px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl bg-[var(--color-surface)] border border-[var(--color-border)] hover:border-[var(--color-primary)] text-[var(--color-text)] transition-all focus-ring"
+           aria-label="Ver resumen de orden espacial: 0 ingredientes, total 12 Créditos Lunares">
+          <span aria-hidden="true" class="text-base sm:text-lg">🛒</span>
+          <span class="hidden md:inline text-xs font-bold uppercase tracking-wider text-[var(--color-text-muted)]">Orden</span>
+          <span id="cart-badge-count" class="badge-count px-2 py-0.5 text-xs font-black rounded-full bg-[var(--color-primary)] force-text-dark">
+            0
+          </span>
+          <span id="cart-badge-total" class="font-black text-xs sm:text-sm text-[var(--color-primary)]">
+            12 LC
+          </span>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Contenido Principal -->
+  <main id="main-content" class="pt-28 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 focus:outline-none" tabindex="-1">
+
+    <!-- SECCIÓN 1: HERO CÓSMICO -->
+    <section id="hero" aria-labelledby="hero-title" class="mb-14 py-10 px-6 sm:px-10 lg:px-12 rounded-3xl hero-card border border-[var(--color-border)] bg-[var(--color-surface)] shadow-2xl transition-all duration-300">
+      <div class="max-w-4xl">
+        <!-- Badge de Propuesta de Valor -->
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-extrabold uppercase tracking-wider bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 mb-5">
+          <span aria-hidden="true">🛰️</span>
+          <span>Entrega Orbital Hipersónica en 15 Minutos Luz</span>
+        </div>
+
+        <!-- Jerarquía Gestalt: Título Principal Adaptativo -->
+        <h1 id="hero-title" class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-[var(--color-text)] leading-tight mb-5">
+          Pizzas Terrestres Tradicionales con Entrega Orbital
+        </h1>
+
+        <!-- Subtítulo / Descripción -->
+        <p id="hero-desc" class="text-base sm:text-lg md:text-xl text-[var(--color-text-muted)] font-normal leading-relaxed mb-8 max-w-3xl">
+          Masa estelar horneada al vacío a gravedad cero con ingredientes certificados de alto rendimiento. Adaptamos las recetas según el metabolismo de tu especie y subsidiamos el 50% para ciudadanos de Zogton.
+        </p>
+
+        <!-- Banner de Biocompatibilidad Informativa -->
+        <div id="hero-bio-banner" class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-5 rounded-2xl bg-[var(--color-bg)] border border-[var(--color-border)] shadow-sm" role="status" aria-live="polite">
+          <div class="flex items-center gap-3.5">
+            <span class="text-3xl" aria-hidden="true">🛡️</span>
+            <div>
+              <strong class="block text-sm sm:text-base font-bold text-[var(--color-text)]">
+                Protocolo BioMédico Activo: Fisiología Humana
+              </strong>
+              <span id="bio-banner-status" class="text-xs sm:text-sm text-[var(--color-text-muted)]">
+                Los compuestos incompatibles (roca espacial, metano y plasma) permanecen restringidos por seguridad.
+              </span>
+            </div>
+          </div>
+          <a href="#builder" class="btn-primary force-text-dark inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-sm font-extrabold tracking-wide shadow-lg focus-ring transition-all w-full sm:w-auto">
+            <span>Configurar Mi Pizza</span>
+            <span aria-hidden="true">↓</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 2: CONFIGURADOR DE PIZZA LUNAR (#builder) -->
+    <section id="builder" aria-labelledby="builder-title" class="mb-16">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+        <div>
+          <span class="text-xs font-black tracking-wider uppercase text-[var(--color-primary)]">Laboratorio de Alimentos Espaciales</span>
+          <h2 id="builder-title" class="text-2xl sm:text-3xl md:text-4xl font-black text-[var(--color-text)] tracking-tight mt-1">
+            Hangar de Configuración de Pizza
+          </h2>
+        </div>
+        <p class="text-sm text-[var(--color-text-muted)] max-w-md">
+          Personaliza tamaño, tipo de masa, toppings e integra PowerUps celulares con cálculo dinámico en Créditos Lunares (LC).
+        </p>
+      </div>
+
+      <!-- 2.1 SELECCIÓN DE TAMAÑO -->
+      <div class="mb-12">
+        <div class="flex items-center justify-between mb-4">
+          <h3 id="size-label" class="text-lg sm:text-xl font-bold text-[var(--color-text)] flex items-center gap-2">
+            <span class="step-badge w-7 h-7 rounded-lg bg-[var(--color-primary)] force-text-dark flex items-center justify-center font-black text-xs">1</span>
+            <span>Selecciona el Tamaño de Base</span>
+          </h3>
+          <span class="text-xs text-[var(--color-text-muted)] font-medium">Requisito obligatorio</span>
+        </div>
+
+        <div role="radiogroup" aria-labelledby="size-label" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          
+          <!-- Tamaño: Personal -->
+          <button type="button" 
+                  role="radio" 
+                  aria-checked="false" 
+                  tabindex="-1"
+                  id="size-personal" 
+                  data-size="personal" 
+                  data-price="8" 
+                  class="card-option size-card p-5 rounded-2xl border text-left flex flex-col justify-between transition-all focus-ring">
+            <div class="flex justify-between items-start mb-3">
+              <span class="text-2xl" aria-hidden="true">🍕</span>
+              <span class="price-tag font-black text-lg text-[var(--color-primary)]">8 LC</span>
+            </div>
+            <div>
+              <strong class="block text-base font-bold text-[var(--color-text)] mb-0.5">Personal</strong>
+              <span class="text-xs text-[var(--color-text-muted)] block">1 Ración · 20 cm orbitales</span>
+            </div>
+          </button>
+
+          <!-- Tamaño: Mediana (Default) -->
+          <button type="button" 
+                  role="radio" 
+                  aria-checked="true" 
+                  tabindex="0"
+                  id="size-medium" 
+                  data-size="medium" 
+                  data-price="12" 
+                  class="card-option size-card is-selected p-5 rounded-2xl border text-left flex flex-col justify-between transition-all focus-ring">
+            <div class="flex justify-between items-start mb-3">
+              <span class="text-2xl" aria-hidden="true">🍕🍕</span>
+              <span class="price-tag font-black text-lg text-[var(--color-primary)]">12 LC</span>
+            </div>
+            <div>
+              <div class="flex items-center gap-1.5 mb-0.5">
+                <strong class="text-base font-bold text-[var(--color-text)]">Mediana</strong>
+                <span class="text-[10px] font-black uppercase px-1.5 py-0.5 rounded bg-[var(--color-primary)]/20 text-[var(--color-primary)]">Estándar</span>
+              </div>
+              <span class="text-xs text-[var(--color-text-muted)] block">2 Raciones · 30 cm orbitales</span>
+            </div>
+          </button>
+
+          <!-- Tamaño: Familiar -->
+          <button type="button" 
+                  role="radio" 
+                  aria-checked="false" 
+                  tabindex="-1"
+                  id="size-large" 
+                  data-size="large" 
+                  data-price="16" 
+                  class="card-option size-card p-5 rounded-2xl border text-left flex flex-col justify-between transition-all focus-ring">
+            <div class="flex justify-between items-start mb-3">
+              <span class="text-2xl" aria-hidden="true">🛸</span>
+              <span class="price-tag font-black text-lg text-[var(--color-primary)]">16 LC</span>
+            </div>
+            <div>
+              <strong class="block text-base font-bold text-[var(--color-text)] mb-0.5">Familiar</strong>
+              <span class="text-xs text-[var(--color-text-muted)] block">4 Raciones · 40 cm orbitales</span>
+            </div>
+          </button>
+
+          <!-- Tamaño: Interestelar -->
+          <button type="button" 
+                  role="radio" 
+                  aria-checked="false" 
+                  tabindex="-1"
+                  id="size-interstellar" 
+                  data-size="interstellar" 
+                  data-price="22" 
+                  class="card-option size-card p-5 rounded-2xl border text-left flex flex-col justify-between transition-all focus-ring">
+            <div class="flex justify-between items-start mb-3">
+              <span class="text-2xl" aria-hidden="true">🪐</span>
+              <span class="price-tag font-black text-lg text-[var(--color-primary)]">22 LC</span>
+            </div>
+            <div>
+              <strong class="block text-base font-bold text-[var(--color-text)] mb-0.5">Interestelar</strong>
+              <span class="text-xs text-[var(--color-text-muted)] block">6 Raciones · 50 cm gravedad cero</span>
+            </div>
+          </button>
+
+        </div>
+      </div>
+
+      <!-- 2.2 SELECCIÓN DE TIPO DE MASA -->
+      <div class="mb-12">
+        <div class="flex items-center justify-between mb-4">
+          <h3 id="crust-label" class="text-lg sm:text-xl font-bold text-[var(--color-text)] flex items-center gap-2">
+            <span class="step-badge w-7 h-7 rounded-lg bg-[var(--color-primary)] force-text-dark flex items-center justify-center font-black text-xs">2</span>
+            <span>Selecciona el Tipo de Masa / Fermentación</span>
+          </h3>
+          <span class="text-xs text-[var(--color-text-muted)] font-medium">Sin costo adicional</span>
+        </div>
+
+        <div role="radiogroup" aria-labelledby="crust-label" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          
+          <!-- Masa: Fina Lunar (Default) -->
+          <button type="button" 
+                  role="radio" 
+                  aria-checked="true" 
+                  tabindex="0"
+                  id="crust-thin" 
+                  data-crust="thin" 
+                  class="card-option crust-card is-selected p-5 rounded-2xl border text-left transition-all focus-ring">
+            <div class="flex items-center justify-between mb-2">
+              <strong class="text-base font-bold text-[var(--color-text)]">Fina Lunar</strong>
+              <span class="text-xl" aria-hidden="true">🌾</span>
+            </div>
+            <p class="text-xs text-[var(--color-text-muted)] leading-relaxed">
+              Receta clásica de la Tierra con harina de trigo cultivada en domos hidropónicos. Suave, crocante y dorada al horno solar.
+            </p>
+          </button>
+
+          <!-- Masa: Volcánica -->
+          <button type="button" 
+                  role="radio" 
+                  aria-checked="false" 
+                  tabindex="-1"
+                  id="crust-volcanic" 
+                  data-crust="volcanic" 
+                  class="card-option crust-card p-5 rounded-2xl border text-left transition-all focus-ring">
+            <div class="flex items-center justify-between mb-2">
+              <strong class="text-base font-bold text-[var(--color-text)]">Volcánica (Picante)</strong>
+              <span class="text-xl" aria-hidden="true">🌋</span>
+            </div>
+            <p class="text-xs text-[var(--color-text-muted)] leading-relaxed">
+              Infusionada con especias marcianas y magma sintético orgánico. Textura crujiente con toque ardiente de alta energía.
+            </p>
+          </button>
+
+          <!-- Masa: Polvo Estelar -->
+          <button type="button" 
+                  role="radio" 
+                  aria-checked="false" 
+                  tabindex="-1"
+                  id="crust-stardust" 
+                  data-crust="stardust" 
+                  class="card-option crust-card p-5 rounded-2xl border text-left transition-all focus-ring">
+            <div class="flex items-center justify-between mb-2">
+              <strong class="text-base font-bold text-[var(--color-text)]">Polvo Estelar (Bio-crujiente)</strong>
+              <span class="text-xl" aria-hidden="true">✨</span>
+            </div>
+            <p class="text-xs text-[var(--color-text-muted)] leading-relaxed">
+              Elaborada con sales micro-ionizadas de meteoritos. Altamente nutritiva, efervescente y apta para gravedad cero.
+            </p>
+          </button>
+
+        </div>
+      </div>
+
+      <!-- 2.3 CATÁLOGO DE INGREDIENTES Y TOPPINGS (AGRUPADOS) -->
+      <div class="mb-12" role="group" aria-labelledby="ingredients-label">
+        <div class="flex items-center justify-between mb-2">
+          <h3 id="ingredients-label" class="text-lg sm:text-xl font-bold text-[var(--color-text)] flex items-center gap-2">
+            <span class="step-badge w-7 h-7 rounded-lg bg-[var(--color-primary)] force-text-dark flex items-center justify-center font-black text-xs">3</span>
+            <span>Catálogo de Ingredientes y Toppings Cósmicos</span>
+          </h3>
+          <span class="text-xs text-[var(--color-text-muted)]">Personaliza tu pizza</span>
+        </div>
+        <p class="text-xs sm:text-sm text-[var(--color-text-muted)] mb-6">
+          Los ingredientes marcados con advertencia biológica están sujetos a validación según tu especie activa.
+        </p>
+
+        <!-- Subgrupo 1: Ingredientes Terrestres Orgánicos -->
+        <div class="mb-8">
+          <h4 class="text-sm font-extrabold text-emerald-400 uppercase tracking-wider mb-4 flex items-center gap-2">
+            <span aria-hidden="true">🌱</span>
+            <span>Ingredientes Terrestres (Seguros para Humanos y Aliens Zogtonianos)</span>
+          </h4>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            
+            <!-- Ingrediente 1: Muzzarella Lunar -->
+            <button type="button" 
+                    role="checkbox" 
+                    aria-checked="false" 
+                    id="ing-muzzarella" 
+                    data-ingredient-id="muzzarella" 
+                    data-price="2" 
+                    data-toxicity="none"
+                    class="card-option ingredient-card p-4 rounded-2xl border text-left flex flex-col justify-between transition-all focus-ring">
+              <div class="flex items-start justify-between gap-2 mb-2">
+                <div class="flex items-center gap-2.5">
+                  <span class="text-2xl" aria-hidden="true">🧀</span>
+                  <div>
+                    <strong class="block text-sm font-bold text-[var(--color-text)]">Muzzarella Lunar</strong>
+                    <span class="text-xs text-[var(--color-text-muted)]">Lácteo cultivado en biosfera</span>
+                  </div>
+                </div>
+                <span class="price-pill text-xs font-black px-2 py-1 rounded-lg bg-[var(--color-primary)]/10 text-[var(--color-primary)] whitespace-nowrap">
+                  +2.00 LC
+                </span>
+              </div>
+              <div class="flex items-center justify-between pt-2 border-t border-[var(--color-border)] text-[11px]">
+                <span class="text-emerald-400 font-semibold flex items-center gap-1">
+                  <span aria-hidden="true">✓</span> Apto universal
+                </span>
+                <span class="status-indicator text-[var(--color-text-muted)] font-medium">Añadir</span>
+              </div>
+            </button>
+
+            <!-- Ingrediente 2: Pepperoni Galáctico -->
+            <button type="button" 
+                    role="checkbox" 
+                    aria-checked="false" 
+                    id="ing-pepperoni" 
+                    data-ingredient-id="pepperoni" 
+                    data-price="3" 
+                    data-toxicity="none"
+                    class="card-option ingredient-card p-4 rounded-2xl border text-left flex flex-col justify-between transition-all focus-ring">
+              <div class="flex items-start justify-between gap-2 mb-2">
+                <div class="flex items-center gap-2.5">
+                  <span class="text-2xl" aria-hidden="true">🍕</span>
+                  <div>
+                    <strong class="block text-sm font-bold text-[var(--color-text)]">Pepperoni Galáctico</strong>
+                    <span class="text-xs text-[var(--color-text-muted)]">Curado al vacío con especias</span>
+                  </div>
+                </div>
+                <span class="price-pill text-xs font-black px-2 py-1 rounded-lg bg-[var(--color-primary)]/10 text-[var(--color-primary)] whitespace-nowrap">
+                  +3.00 LC
+                </span>
+              </div>
+              <div class="flex items-center justify-between pt-2 border-t border-[var(--color-border)] text-[11px]">
+                <span class="text-emerald-400 font-semibold flex items-center gap-1">
+                  <span aria-hidden="true">✓</span> Apto universal
+                </span>
+                <span class="status-indicator text-[var(--color-text-muted)] font-medium">Añadir</span>
+              </div>
+            </button>
+
+            <!-- Ingrediente 3: Bacon Cósmico -->
+            <button type="button" 
+                    role="checkbox" 
+                    aria-checked="false" 
+                    id="ing-bacon" 
+                    data-ingredient-id="bacon" 
+                    data-price="3" 
+                    data-toxicity="none"
+                    class="card-option ingredient-card p-4 rounded-2xl border text-left flex flex-col justify-between transition-all focus-ring">
+              <div class="flex items-start justify-between gap-2 mb-2">
+                <div class="flex items-center gap-2.5">
+                  <span class="text-2xl" aria-hidden="true">🥓</span>
+                  <div>
+                    <strong class="block text-sm font-bold text-[var(--color-text)]">Bacon Cósmico</strong>
+                    <span class="text-xs text-[var(--color-text-muted)]">Ahumado en hidroponia orbital</span>
+                  </div>
+                </div>
+                <span class="price-pill text-xs font-black px-2 py-1 rounded-lg bg-[var(--color-primary)]/10 text-[var(--color-primary)] whitespace-nowrap">
+                  +3.00 LC
+                </span>
+              </div>
+              <div class="flex items-center justify-between pt-2 border-t border-[var(--color-border)] text-[11px]">
+                <span class="text-emerald-400 font-semibold flex items-center gap-1">
+                  <span aria-hidden="true">✓</span> Apto universal
+                </span>
+                <span class="status-indicator text-[var(--color-text-muted)] font-medium">Añadir</span>
+              </div>
+            </button>
+
+            <!-- Ingrediente 4: Provolone de Asteroide -->
+            <button type="button" 
+                    role="checkbox" 
+                    aria-checked="false" 
+                    id="ing-provolone" 
+                    data-ingredient-id="provolone" 
+                    data-price="2.5" 
+                    data-toxicity="none"
+                    class="card-option ingredient-card p-4 rounded-2xl border text-left flex flex-col justify-between transition-all focus-ring">
+              <div class="flex items-start justify-between gap-2 mb-2">
+                <div class="flex items-center gap-2.5">
+                  <span class="text-2xl" aria-hidden="true">🧀</span>
+                  <div>
+                    <strong class="block text-sm font-bold text-[var(--color-text)]">Provolone de Asteroide</strong>
+                    <span class="text-xs text-[var(--color-text-muted)]">Maduración en baja gravedad</span>
+                  </div>
+                </div>
+                <span class="price-pill text-xs font-black px-2 py-1 rounded-lg bg-[var(--color-primary)]/10 text-[var(--color-primary)] whitespace-nowrap">
+                  +2.50 LC
+                </span>
+              </div>
+              <div class="flex items-center justify-between pt-2 border-t border-[var(--color-border)] text-[11px]">
+                <span class="text-emerald-400 font-semibold flex items-center gap-1">
+                  <span aria-hidden="true">✓</span> Apto universal
+                </span>
+                <span class="status-indicator text-[var(--color-text-muted)] font-medium">Añadir</span>
+              </div>
+            </button>
+
+            <!-- Ingrediente 5: Morrón de Marte -->
+            <button type="button" 
+                    role="checkbox" 
+                    aria-checked="false" 
+                    id="ing-morron" 
+                    data-ingredient-id="morron" 
+                    data-price="1.5" 
+                    data-toxicity="none"
+                    class="card-option ingredient-card p-4 rounded-2xl border text-left flex flex-col justify-between transition-all focus-ring">
+              <div class="flex items-start justify-between gap-2 mb-2">
+                <div class="flex items-center gap-2.5">
+                  <span class="text-2xl" aria-hidden="true">🫑</span>
+                  <div>
+                    <strong class="block text-sm font-bold text-[var(--color-text)]">Morrón de Marte</strong>
+                    <span class="text-xs text-[var(--color-text-muted)]">Vegetal crujiente de cúpula</span>
+                  </div>
+                </div>
+                <span class="price-pill text-xs font-black px-2 py-1 rounded-lg bg-[var(--color-primary)]/10 text-[var(--color-primary)] whitespace-nowrap">
+                  +1.50 LC
+                </span>
+              </div>
+              <div class="flex items-center justify-between pt-2 border-t border-[var(--color-border)] text-[11px]">
+                <span class="text-emerald-400 font-semibold flex items-center gap-1">
+                  <span aria-hidden="true">✓</span> Apto universal
+                </span>
+                <span class="status-indicator text-[var(--color-text-muted)] font-medium">Añadir</span>
+              </div>
+            </button>
+
+            <!-- Ingrediente 6: Aceitunas de Ganímedes -->
+            <button type="button" 
+                    role="checkbox" 
+                    aria-checked="false" 
+                    id="ing-aceitunas" 
+                    data-ingredient-id="aceitunas" 
+                    data-price="1.5" 
+                    data-toxicity="none"
+                    class="card-option ingredient-card p-4 rounded-2xl border text-left flex flex-col justify-between transition-all focus-ring">
+              <div class="flex items-start justify-between gap-2 mb-2">
+                <div class="flex items-center gap-2.5">
+                  <span class="text-2xl" aria-hidden="true">🫒</span>
+                  <div>
+                    <strong class="block text-sm font-bold text-[var(--color-text)]">Aceitunas de Ganímedes</strong>
+                    <span class="text-xs text-[var(--color-text-muted)]">Encurtidas en salmuera joviana</span>
+                  </div>
+                </div>
+                <span class="price-pill text-xs font-black px-2 py-1 rounded-lg bg-[var(--color-primary)]/10 text-[var(--color-primary)] whitespace-nowrap">
+                  +1.50 LC
+                </span>
+              </div>
+              <div class="flex items-center justify-between pt-2 border-t border-[var(--color-border)] text-[11px]">
+                <span class="text-emerald-400 font-semibold flex items-center gap-1">
+                  <span aria-hidden="true">✓</span> Apto universal
+                </span>
+                <span class="status-indicator text-[var(--color-text-muted)] font-medium">Añadir</span>
+              </div>
+            </button>
+
+          </div>
+        </div>
+
+        <!-- Subgrupo 2: Ingredientes Cósmicos y Zogtonianos (Con Toxicidad Humana) -->
+        <div>
+          <h4 class="text-sm font-extrabold text-amber-400 uppercase tracking-wider mb-4 flex items-center gap-2">
+            <span aria-hidden="true">⚡</span>
+            <span>Ingredientes Cósmicos & Toppings Zogtonianos (¡Alerta Toxicológica!)</span>
+          </h4>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            
+            <!-- Ingrediente 7: Roca Espacial (Tóxico Humano) -->
+            <button type="button" 
+                    role="checkbox" 
+                    aria-checked="false" 
+                    id="ing-space-rock" 
+                    data-ingredient-id="space-rock" 
+                    data-price="4" 
+                    data-toxicity="toxic-human"
+                    class="card-option ingredient-card p-4 rounded-2xl border text-left flex flex-col justify-between transition-all focus-ring">
+              <div class="flex items-start justify-between gap-2 mb-2">
+                <div class="flex items-center gap-2.5">
+                  <span class="text-2xl" aria-hidden="true">🪨</span>
+                  <div>
+                    <strong class="block text-sm font-bold text-[var(--color-text)]">Roca Espacial</strong>
+                    <span class="text-xs text-[var(--color-text-muted)]">Mineral ionizado Zogton</span>
+                  </div>
+                </div>
+                <span class="price-pill text-xs font-black px-2 py-1 rounded-lg bg-[var(--color-primary)]/10 text-[var(--color-primary)] whitespace-nowrap">
+                  +4.00 LC
+                </span>
+              </div>
+              <div class="flex items-center justify-between pt-2 border-t border-[var(--color-border)] text-[11px]">
+                <span class="text-red-400 font-semibold flex items-center gap-1">
+                  <span aria-hidden="true">⚠️</span> Tóxico humanos
+                </span>
+                <span class="status-indicator text-[var(--color-text-muted)] font-medium">Añadir</span>
+              </div>
+            </button>
+
+            <!-- Ingrediente 8: Bebida Metano (Tóxico Humano) -->
+            <button type="button" 
+                    role="checkbox" 
+                    aria-checked="false" 
+                    id="ing-methane-drink" 
+                    data-ingredient-id="methane-drink" 
+                    data-price="3.5" 
+                    data-toxicity="toxic-human"
+                    class="card-option ingredient-card p-4 rounded-2xl border text-left flex flex-col justify-between transition-all focus-ring">
+              <div class="flex items-start justify-between gap-2 mb-2">
+                <div class="flex items-center gap-2.5">
+                  <span class="text-2xl" aria-hidden="true">🧪</span>
+                  <div>
+                    <strong class="block text-sm font-bold text-[var(--color-text)]">Bebida Metano</strong>
+                    <span class="text-xs text-[var(--color-text-muted)]">Hidrocarburo criogénico</span>
+                  </div>
+                </div>
+                <span class="price-pill text-xs font-black px-2 py-1 rounded-lg bg-[var(--color-primary)]/10 text-[var(--color-primary)] whitespace-nowrap">
+                  +3.50 LC
+                </span>
+              </div>
+              <div class="flex items-center justify-between pt-2 border-t border-[var(--color-border)] text-[11px]">
+                <span class="text-red-400 font-semibold flex items-center gap-1">
+                  <span aria-hidden="true">⚠️</span> Tóxico humanos
+                </span>
+                <span class="status-indicator text-[var(--color-text-muted)] font-medium">Añadir</span>
+              </div>
+            </button>
+
+            <!-- Ingrediente 9: Salsa Solar (Apto Todos) -->
+            <button type="button" 
+                    role="checkbox" 
+                    aria-checked="false" 
+                    id="ing-solar-sauce" 
+                    data-ingredient-id="solar-sauce" 
+                    data-price="2" 
+                    data-toxicity="none"
+                    class="card-option ingredient-card p-4 rounded-2xl border text-left flex flex-col justify-between transition-all focus-ring">
+              <div class="flex items-start justify-between gap-2 mb-2">
+                <div class="flex items-center gap-2.5">
+                  <span class="text-2xl" aria-hidden="true">☀️</span>
+                  <div>
+                    <strong class="block text-sm font-bold text-[var(--color-text)]">Salsa Solar</strong>
+                    <span class="text-xs text-[var(--color-text-muted)]">Fotones picantes concentrados</span>
+                  </div>
+                </div>
+                <span class="price-pill text-xs font-black px-2 py-1 rounded-lg bg-[var(--color-primary)]/10 text-[var(--color-primary)] whitespace-nowrap">
+                  +2.00 LC
+                </span>
+              </div>
+              <div class="flex items-center justify-between pt-2 border-t border-[var(--color-border)] text-[11px]">
+                <span class="text-emerald-400 font-semibold flex items-center gap-1">
+                  <span aria-hidden="true">✓</span> Apto universal
+                </span>
+                <span class="status-indicator text-[var(--color-text-muted)] font-medium">Añadir</span>
+              </div>
+            </button>
+
+            <!-- Ingrediente 10: Cristales de Plasma (Tóxico Humano) -->
+            <button type="button" 
+                    role="checkbox" 
+                    aria-checked="false" 
+                    id="ing-plasma-crystals" 
+                    data-ingredient-id="plasma-crystals" 
+                    data-price="4.5" 
+                    data-toxicity="toxic-human"
+                    class="card-option ingredient-card p-4 rounded-2xl border text-left flex flex-col justify-between transition-all focus-ring">
+              <div class="flex items-start justify-between gap-2 mb-2">
+                <div class="flex items-center gap-2.5">
+                  <span class="text-2xl" aria-hidden="true">💎</span>
+                  <div>
+                    <strong class="block text-sm font-bold text-[var(--color-text)]">Cristales de Plasma</strong>
+                    <span class="text-xs text-[var(--color-text-muted)]">Bio-lumínico ionizante</span>
+                  </div>
+                </div>
+                <span class="price-pill text-xs font-black px-2 py-1 rounded-lg bg-[var(--color-primary)]/10 text-[var(--color-primary)] whitespace-nowrap">
+                  +4.50 LC
+                </span>
+              </div>
+              <div class="flex items-center justify-between pt-2 border-t border-[var(--color-border)] text-[11px]">
+                <span class="text-red-400 font-semibold flex items-center gap-1">
+                  <span aria-hidden="true">⚠️</span> Tóxico humanos
+                </span>
+                <span class="status-indicator text-[var(--color-text-muted)] font-medium">Añadir</span>
+              </div>
+            </button>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- 2.4 PANEL DE POWERUPS CELULARES (EXCLUSIVO ZOGTONIANOS) -->
+      <section id="powerup-panel" aria-labelledby="powerup-title" class="p-6 sm:p-8 rounded-3xl bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xl transition-all">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+          <h3 id="powerup-title" class="text-lg sm:text-xl font-bold text-[var(--color-text)] flex items-center gap-2">
+            <span class="step-badge w-7 h-7 rounded-lg bg-[var(--color-primary)] force-text-dark flex items-center justify-center font-black text-xs">4</span>
+            <span>PowerUps Celulares Bioenergéticos</span>
+          </h3>
+          <span class="badge-zogton-exclusive inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+            <span>👽</span> Exclusivo Aliens Zogtonianos
+          </span>
+        </div>
+
+        <p id="powerup-notice" class="text-xs sm:text-sm text-[var(--color-text-muted)] mb-6 leading-relaxed">
+          Recarga bioenergética mitocondrial instantánea. <span class="font-bold text-amber-400">Deshabilitado para humanos</span> debido a incompatibilidad con sistemas circulatorios de base carbono.
+        </p>
+
+        <div role="radiogroup" aria-labelledby="powerup-title" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          
+          <!-- PowerUp 1 -->
+          <button type="button" 
+                  role="radio" 
+                  aria-checked="false" 
+                  id="powerup-regen1" 
+                  data-powerup="regen1" 
+                  data-price="3" 
+                  class="card-option powerup-card p-4 rounded-2xl border text-left flex flex-col justify-between transition-all focus-ring disabled:opacity-40 disabled:cursor-not-allowed">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-2xl" aria-hidden="true">⚡</span>
+              <span class="font-black text-sm text-[var(--color-primary)]">+3.00 LC</span>
+            </div>
+            <div>
+              <strong class="block text-sm font-bold text-[var(--color-text)]">Regeneración Nivel 1</strong>
+              <span class="text-xs text-emerald-400 font-semibold block mt-0.5">+30% bioenergía en 15 min</span>
+            </div>
+          </button>
+
+          <!-- PowerUp 2 -->
+          <button type="button" 
+                  role="radio" 
+                  aria-checked="false" 
+                  id="powerup-regen2" 
+                  data-powerup="regen2" 
+                  data-price="5" 
+                  class="card-option powerup-card p-4 rounded-2xl border text-left flex flex-col justify-between transition-all focus-ring disabled:opacity-40 disabled:cursor-not-allowed">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-2xl" aria-hidden="true">🔋</span>
+              <span class="font-black text-sm text-[var(--color-primary)]">+5.00 LC</span>
+            </div>
+            <div>
+              <strong class="block text-sm font-bold text-[var(--color-text)]">Regeneración Nivel 2</strong>
+              <span class="text-xs text-emerald-400 font-semibold block mt-0.5">+50% bioenergía en 30 min</span>
+            </div>
+          </button>
+
+          <!-- PowerUp 3 -->
+          <button type="button" 
+                  role="radio" 
+                  aria-checked="false" 
+                  id="powerup-regen3" 
+                  data-powerup="regen3" 
+                  data-price="8" 
+                  class="card-option powerup-card p-4 rounded-2xl border text-left flex flex-col justify-between transition-all focus-ring disabled:opacity-40 disabled:cursor-not-allowed">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-2xl" aria-hidden="true">🌟</span>
+              <span class="font-black text-sm text-[var(--color-primary)]">+8.00 LC</span>
+            </div>
+            <div>
+              <strong class="block text-sm font-bold text-[var(--color-text)]">Regeneración Nivel 3</strong>
+              <span class="text-xs text-emerald-400 font-semibold block mt-0.5">+80% bioenergía en 45 min</span>
+            </div>
+          </button>
+
+        </div>
+      </section>
+
+    </section>
+
+    <!-- SECCIÓN 3: RESUMEN Y CHECKOUT LUNAR (#checkout-section) -->
+    <section id="checkout-section" aria-labelledby="checkout-title" class="pt-10 border-t border-[var(--color-border)]">
+      <div class="mb-8">
+        <span class="text-xs font-black tracking-wider uppercase text-[var(--color-primary)]">Puente de Comando y Entrega</span>
+        <h2 id="checkout-title" class="text-2xl sm:text-3xl md:text-4xl font-black text-[var(--color-text)] tracking-tight mt-1">
+          Resumen de Orden y Lanzamiento Espacial
+        </h2>
+        <p class="text-sm text-[var(--color-text-muted)] mt-1">
+          Valida los componentes de tu pedido en vivo y suministra las coordenadas de navegación de tu base o domo.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- COLUMNA 1: DESGLOSE DE COSTOS EN CRÉDITOS LUNARES -->
+        <div role="region" aria-label="Desglose del Pedido" class="lg:col-span-5 p-6 rounded-3xl bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xl sticky top-28">
+          <div class="flex items-center justify-between pb-4 border-b border-[var(--color-border)] mb-4">
+            <h3 class="text-base font-bold text-[var(--color-text)] flex items-center gap-2">
+              <span aria-hidden="true">📋</span>
+              <span>Desglose de Costos</span>
+            </h3>
+            <span class="text-[10px] font-mono uppercase tracking-wider text-emerald-400 font-bold px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20">
+              VIVO
+            </span>
+          </div>
+
+          <div class="space-y-3 text-sm">
+            <!-- Fila Base y Tamaño -->
+            <div class="flex justify-between items-center">
+              <span class="text-[var(--color-text-muted)]">Base (<span id="summary-size" class="font-semibold text-[var(--color-text)]">Mediana</span>):</span>
+              <span id="summary-base-price" class="font-bold text-[var(--color-text)]">12.00 LC</span>
+            </div>
+
+            <!-- Fila Tipo de Masa -->
+            <div class="flex justify-between items-center">
+              <span class="text-[var(--color-text-muted)]">Masa:</span>
+              <span id="summary-crust" class="font-semibold text-[var(--color-text)]">Fina Lunar</span>
+            </div>
+
+            <!-- Fila Descuento Alien Zogtoniano (-50%) -->
+            <div id="summary-discount-row" class="hidden flex justify-between items-center py-2 px-3 rounded-xl bg-emerald-950/40 border border-emerald-500/30 text-emerald-400 text-xs font-bold">
+              <span class="flex items-center gap-1.5">
+                <span aria-hidden="true">👽</span>
+                <span>Subsidio Alien (50% OFF base):</span>
+              </span>
+              <span id="summary-discount-amount" class="text-sm font-black">-6.00 LC</span>
+            </div>
+
+            <!-- Fila Ingredientes Seleccionados -->
+            <div class="py-3 border-t border-b border-[var(--color-border)] my-2">
+              <div class="flex justify-between items-center mb-2">
+                <span class="font-semibold text-[var(--color-text)]">Toppings e Ingredientes:</span>
+                <span id="summary-ingredients-cost" class="font-bold text-[var(--color-text)]">0.00 LC</span>
+              </div>
+              <ul id="summary-ingredients-list" class="text-xs space-y-1 text-[var(--color-text-muted)] max-h-36 overflow-y-auto pl-1 pr-1">
+                <li class="italic text-[var(--color-text-muted)]/70">Ningún ingrediente seleccionado</li>
+              </ul>
+            </div>
+
+            <!-- Fila PowerUp Celular -->
+            <div class="flex justify-between items-center">
+              <span class="text-[var(--color-text-muted)]">PowerUp Celular:</span>
+              <div class="text-right">
+                <span id="summary-powerup" class="font-semibold text-[var(--color-text)] block text-xs">Ninguno</span>
+                <span id="summary-powerup-cost" class="font-bold text-[var(--color-text)] text-xs">0.00 LC</span>
+              </div>
+            </div>
+
+            <!-- Fila Total en Créditos Lunares -->
+            <div class="pt-4 border-t-2 border-[var(--color-border)] flex justify-between items-baseline">
+              <span class="text-base font-bold text-[var(--color-text)]">Total Estimado:</span>
+              <div class="text-right">
+                <span id="summary-total" class="text-3xl font-black text-[var(--color-primary)]">12.00</span>
+                <span class="font-black text-sm text-[var(--color-primary)] ml-1">LC</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Botón de Reinicio -->
+          <button type="button" 
+                  id="btn-reset-order" 
+                  class="btn-secondary w-full mt-6 py-2.5 px-4 rounded-xl text-xs font-bold flex items-center justify-center gap-2 border border-[var(--color-border)] hover:bg-[var(--color-surface-hover)] transition-all focus-ring">
+            <span aria-hidden="true">🔄</span>
+            <span>Reiniciar Configuración</span>
+          </button>
+        </div>
+
+        <!-- COLUMNA 2: FORMULARIO DE ENTREGA LUNAR (#order-form) -->
+        <div class="lg:col-span-7">
+          <form id="order-form" novalidate class="order-form p-6 sm:p-8 rounded-3xl bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xl">
+            <h3 class="text-xl font-bold text-[var(--color-text)] mb-1">
+              Telemetría y Destino Orbital
+            </h3>
+            <p class="text-xs text-[var(--color-text-muted)] mb-6">
+              Los campos señalados con <span class="text-red-400 font-bold" aria-hidden="true">*</span> son obligatorios para calcular la parábola de inserción balística.
+            </p>
+
+            <!-- Contenedor Accesible de Errores (role="alert" / aria-live="polite") -->
+            <div id="form-errors" role="alert" aria-live="polite" class="hidden mb-6 p-4 rounded-2xl bg-red-950/70 border-2 border-red-500 text-red-200 text-xs sm:text-sm font-medium">
+            </div>
+
+            <div class="space-y-5">
+              
+              <!-- Campo 1: Nombre de Piloto -->
+              <div>
+                <label for="pilot-name" class="block text-xs sm:text-sm font-bold text-[var(--color-text)] mb-1.5">
+                  Nombre del Piloto o Comandante <span class="text-red-400" aria-hidden="true">*</span>
+                </label>
+                <input type="text" 
+                       id="pilot-name" 
+                       name="pilotName" 
+                       required 
+                       placeholder="Ej: Comandante Shepard" 
+                       class="input-field w-full px-4 py-3 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg)] text-[var(--color-text)] text-sm font-medium focus-ring transition-all placeholder:text-[var(--color-text-muted)]/50"
+                       aria-describedby="pilot-name-error">
+                <span id="pilot-name-error" class="input-error-msg hidden text-xs text-red-400 font-semibold mt-1.5 block"></span>
+              </div>
+
+              <!-- Campo 2: Sector Lunar / Estación -->
+              <div>
+                <label for="lunar-sector" class="block text-xs sm:text-sm font-bold text-[var(--color-text)] mb-1.5">
+                  Sector Lunar o Estación Orbital <span class="text-red-400" aria-hidden="true">*</span>
+                </label>
+                <select id="lunar-sector" 
+                        name="lunarSector" 
+                        required 
+                        class="select-field w-full px-4 py-3 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg)] text-[var(--color-text)] text-sm font-medium focus-ring transition-all"
+                        aria-describedby="lunar-sector-error">
+                  <option value="">Selecciona un sector espacial de entrega...</option>
+                  <option value="domo-alfa">Domo Alfa (Base Minera de Silicio)</option>
+                  <option value="crater-tycho">Cráter Tycho (Complejo Científico y Criogenia)</option>
+                  <option value="mar-tranquilidad">Mar de la Tranquilidad (Muelle Comercial Estelar)</option>
+                  <option value="estacion-mir3">Estación Orbital Mir-3 (Órbita Baja)</option>
+                  <option value="colonia-zogton">Colonia Zogtoniana Subterránea (Nivel Bio-4)</option>
+                </select>
+                <span id="lunar-sector-error" class="input-error-msg hidden text-xs text-red-400 font-semibold mt-1.5 block"></span>
+              </div>
+
+              <!-- Campo 3: Coordenadas Espaciales -->
+              <div>
+                <label for="orbital-coords" class="block text-xs sm:text-sm font-bold text-[var(--color-text)] mb-1.5">
+                  Coordenadas Espaciales (Formato SEC-XX-YYY) <span class="text-red-400" aria-hidden="true">*</span>
+                </label>
+                <input type="text" 
+                       id="orbital-coords" 
+                       name="orbitalCoords" 
+                       required 
+                       pattern="[A-Z]{3}-\d{2}-[A-Z]+" 
+                       placeholder="SEC-04-ALPHA" 
+                       class="input-field w-full px-4 py-3 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg)] text-[var(--color-text)] text-sm font-mono uppercase focus-ring transition-all placeholder:text-[var(--color-text-muted)]/50"
+                       aria-describedby="coords-help orbital-coords-error">
+                <p id="coords-help" class="text-xs text-[var(--color-text-muted)] mt-1">
+                  Patrón regulatorio exigido: 3 letras de sector, guión, 2 dígitos, guión, código alfanumérico (ej: <span class="font-mono">SEC-04-ALPHA</span>).
+                </p>
+                <span id="orbital-coords-error" class="input-error-msg hidden text-xs text-red-400 font-semibold mt-1.5 block"></span>
+              </div>
+
+              <!-- Campo 4: Método de Pago Galáctico -->
+              <div>
+                <label for="payment-method" class="block text-xs sm:text-sm font-bold text-[var(--color-text)] mb-1.5">
+                  Método de Pago Galáctico
+                </label>
+                <select id="payment-method" 
+                        name="paymentMethod" 
+                        class="select-field w-full px-4 py-3 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg)] text-[var(--color-text)] text-sm font-medium focus-ring transition-all">
+                  <option value="credits">Créditos Lunares (LC) · Descuento de saldo inmediato</option>
+                  <option value="cripto-nova">Cripto Nova (Blockchain Estelar de Titán)</option>
+                  <option value="vales-flota">Vales de Ración de la Flota Espacial Terrestre</option>
+                </select>
+              </div>
+
+              <!-- Botón CTA Primario -->
+              <button type="submit" 
+                      id="btn-submit-order" 
+                      class="btn-primary force-text-dark w-full mt-4 py-4 px-6 rounded-2xl text-base sm:text-lg font-black tracking-wide shadow-2xl flex items-center justify-center gap-3 focus-ring transition-all">
+                <span aria-hidden="true" class="text-xl">🚀</span>
+                <span>Lanzar Pedido al Espacio</span>
+              </button>
+
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MODAL 1: ALERTA DE INCOMPATIBILIDAD BIOLÓGICA (WAI-ARIA alertdialog) -->
+  <dialog id="modal-bio-alert" 
+          role="alertdialog" 
+          aria-modal="true" 
+          aria-labelledby="bio-alert-title" 
+          aria-describedby="bio-alert-desc" 
+          class="modal-dialog">
+    <div class="modal-content p-6 sm:p-8 rounded-3xl bg-[var(--color-surface)] border-2 border-red-500 shadow-2xl max-w-lg w-full text-left">
+      
+      <div class="flex items-center justify-between pb-4 border-b border-[var(--color-border)] mb-4">
+        <div class="flex items-center gap-3">
+          <span class="text-3xl" aria-hidden="true">⚠️</span>
+          <h3 id="bio-alert-title" class="text-lg sm:text-xl font-black text-red-400">
+            ¡ALERTA BIO-MÉDICA: INGREDIENTE PROHIBIDO!
+          </h3>
+        </div>
+        <button type="button" 
+                id="btn-close-bio-alert-x" 
+                class="modal-close-btn p-1.5 rounded-lg text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:bg-[var(--color-surface-hover)] focus-ring transition-all" 
+                aria-label="Cerrar advertencia biológica">
+          <span aria-hidden="true" class="text-xl font-bold">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body space-y-4 mb-6">
+        <p id="bio-alert-desc" class="text-sm text-[var(--color-text)] leading-relaxed">
+          El protocolo de bioseguridad ha bloqueado la selección. Este ingrediente contiene hidrocarburos criogénicos o minerales ionizados incompatibles con la fisiología activa.
+        </p>
+
+        <div class="p-4 rounded-xl bg-red-950/50 border border-red-500/40 text-red-200 text-xs sm:text-sm">
+          <strong class="block font-bold mb-1">Informe Toxicológico de la Federación:</strong>
+          <span id="bio-alert-detail">Roca Espacial / Metano no asimilable por el sistema digestivo humano. Provocaría cristalización celular inmediata.</span>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" 
+                id="btn-close-bio-alert" 
+                class="btn-primary force-text-dark w-full py-3.5 px-4 rounded-xl font-black text-sm shadow-lg focus-ring transition-all">
+          Entendido, preservar mi salud
+        </button>
+      </div>
+
+    </div>
+  </dialog>
+
+  <!-- MODAL 2: CONFIRMACIÓN DE PEDIDO LUNAR (WAI-ARIA dialog) -->
+  <dialog id="modal-order-success" 
+          role="dialog" 
+          aria-modal="true" 
+          aria-labelledby="order-success-title" 
+          class="modal-dialog">
+    <div class="modal-content p-6 sm:p-8 rounded-3xl bg-[var(--color-surface)] border-2 border-emerald-500 shadow-2xl max-w-lg w-full text-left">
+      
+      <div class="flex items-center justify-between pb-4 border-b border-[var(--color-border)] mb-4">
+        <div class="flex items-center gap-3">
+          <span class="text-3xl" aria-hidden="true">🚀</span>
+          <h3 id="order-success-title" class="text-lg sm:text-xl font-black text-emerald-400">
+            ¡Misión de Lanzamiento Exitosa!
+          </h3>
+        </div>
+        <button type="button" 
+                id="btn-close-order-success-x" 
+                class="modal-close-btn p-1.5 rounded-lg text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:bg-[var(--color-surface-hover)] focus-ring transition-all" 
+                aria-label="Cerrar confirmación de orden">
+          <span aria-hidden="true" class="text-xl font-bold">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body space-y-4 mb-6">
+        <p class="text-sm text-[var(--color-text)] leading-relaxed">
+          Tu pizza intergaláctica ha ingresado a la catapulta de lanzamiento orbital de la Estación Alfa-1 y va en rumbo hiperbólico a tu sector.
+        </p>
+
+        <div class="p-4 rounded-xl bg-emerald-950/40 border border-emerald-500/40 text-xs sm:text-sm space-y-2">
+          <div class="flex justify-between items-center">
+            <span class="text-[var(--color-text-muted)]">Voucher de Telemetría:</span>
+            <span id="success-voucher-code" class="font-mono font-bold text-amber-300">#LUNAR-7749</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-[var(--color-text-muted)]">Piloto al Mando:</span>
+            <span id="success-pilot-name" class="font-bold text-[var(--color-text)]">-</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-[var(--color-text-muted)]">Destino / Coordenadas:</span>
+            <span id="success-destination" class="font-mono text-xs text-[var(--color-text)]">-</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-[var(--color-text-muted)]">Tiempo Estimado de Entrega:</span>
+            <span id="success-eta" class="text-emerald-300 font-bold">15-20 minutos luz</span>
+          </div>
+          <div class="pt-2 border-t border-emerald-500/30 flex justify-between items-center">
+            <span class="font-bold text-[var(--color-text)]">Total Facturado:</span>
+            <span id="success-total" class="font-black text-amber-400 text-base">-</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer flex flex-col sm:flex-row gap-3">
+        <button type="button" 
+                id="btn-new-order" 
+                class="btn-primary force-text-dark flex-1 py-3.5 px-4 rounded-xl font-black text-sm shadow-lg focus-ring transition-all text-center">
+          Configurar Nuevo Pedido
+        </button>
+        <button type="button" 
+                id="btn-close-order-success" 
+                class="btn-secondary flex-1 py-3.5 px-4 rounded-xl font-bold text-sm border border-[var(--color-border)] hover:bg-[var(--color-surface-hover)] focus-ring transition-all text-center">
+          Cerrar
+        </button>
+      </div>
+
+    </div>
+  </dialog>
+
+  <!-- Footer Semántico accesible -->
+  <footer class="border-t border-[var(--color-border)] bg-[var(--color-surface)] py-10 transition-colors" role="contentinfo">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[var(--color-text-muted)]">
+      <div class="flex items-center gap-2">
+        <span aria-hidden="true">🚀</span>
+        <span class="font-bold text-[var(--color-text)]">Rocket Pizza Lunar SPA</span>
+        <span>· Seminario de Interfaz de Usuario y Desarrollo de Software (iTec 2026)</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <span>Accesibilidad WCAG AA Certificada</span>
+        <span>·</span>
+        <a href="#main-content" class="hover:text-[var(--color-primary)] focus-ring rounded px-1 transition-colors">Volver arriba ↑</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
